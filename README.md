@@ -1,0 +1,58 @@
+# Clean Marvel Kotlin
+Kata Kotlin 
+Follow [Clean Arquitecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html/) and  MVP bases 
+
+## Using :
+
+[Retrofit](http://square.github.io/retrofit/)
+
+[Gson converter](https://github.com/square/retrofit/tree/master/retrofit-converters/gson)
+
+[RxJava](https://github.com/ReactiveX/RxJava)
+
+[RxAndroid](https://github.com/ReactiveX/rxandroid)
+
+[Picasso](https://github.com/square/picasso)
+
+## How it looks
+![alt text](https://github.com/adsf117/MVP_MARVEL_RX/blob/master/demo_small.gif)
+
+
+## How to use this project
+
+You can use Android Studio or Intellij to work with this repository.
+
+First thing you will need to compile this project is to get an [API Key and hash from Marvel](https://marvel.com/signin?referer=https%3A%2F%2Fdeveloper.marvel.com%2Faccount)
+
+```Clean_Marvel_Kotlin/app/build.gradle
+  buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
+  buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
+```
+
+The `Kotlin` plugin for Android Studio is also required.
+
+# In progress:
+1. add detail screen
+
+# Enhancements:
+1. add commics screen 
+2. add pager scroll
+
+# Code Enhancements:
+
+1. Add Dagger2
+2. Add Presenter Test
+3. Improve MVP
+4. create a module for layer data and domain
+5. add a repository libary could be Realm
+
+
+
+## Sources
+
+[Course Kotlin for android developers by  Antonio Leiva](https://academy.antonioleiva.com/courses/)
+
+[Keddit — Part 6: API — Retrofit & Kotlin](https://android.jlelse.eu/keddit-part-6-api-retrofit-kotlin-d309074af0)
+
+[Karumi/KataScreenshotKotlin](https://github.com/Karumi/KataScreenshotKotlin)
+
