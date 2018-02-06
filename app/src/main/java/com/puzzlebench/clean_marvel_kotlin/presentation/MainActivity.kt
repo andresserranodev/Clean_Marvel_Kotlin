@@ -42,7 +42,7 @@ class MainActivity : BaseRxActivity(), CharacterView {
     }
 
     override fun showLoading() {
-        progressBar.visibility = View.GONE
+        progressBar.visibility = View.VISIBLE
 
     }
 }
