@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseRxActivity(), CharacterView {
 
-    val presenter = CharacterPresenter(this, GetCharacterServiceUseCase(CharacterServicesImpl()), subscriptions)
+    val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+    val presenter = CharacterPresenter(this, getCharacterServiceUseCase, subscriptions)
     var adapter = CharacterAdapter { character -> showToast(character.name) }
     private val SPAN_COUNT = 1
 
