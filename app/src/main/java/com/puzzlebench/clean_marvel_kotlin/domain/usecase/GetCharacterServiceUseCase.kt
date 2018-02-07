@@ -6,5 +6,5 @@ import io.reactivex.Observable
 
 open class GetCharacterServiceUseCase(private val characterServiceImp: CharacterServicesImpl) {
 
-    operator fun invoke(): Observable<List<Character>> = characterServiceImp.getCaracters()
+   open operator fun invoke(): Observable<List<Character>> = characterServiceImp.getCaracters()
 }
