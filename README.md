@@ -35,16 +35,14 @@ The `Kotlin` plugin for Android Studio is also required.
 1. add detail screen
 
 # Enhancements:
-1. add commics screen 
+1. add commics taps 
 2. add pager scroll
 
 # Code Enhancements:
 
 1. Add Dagger2
-2. Add Presenter Test
-3. Improve MVP
-4. create a module for layer data and domain
-5. add a repository libary could be Realm
+2. create a module for layer data and domain
+3. add a repository libary could be Realm
 
 
 
