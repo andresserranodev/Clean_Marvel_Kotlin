@@ -31,18 +31,16 @@ First thing you will need to compile this project is to get an [API Key and hash
 
 The `Kotlin` plugin for Android Studio is also required.
 
-# In progress:
+# TODO:
 1. add detail screen
-
-# Enhancements:
-1. add commics taps 
-2. add pager scroll
+2. add commics taps 
+3. add pager scroll
+4. add a repository use Realm
 
 # Code Enhancements:
 
 1. Add Dagger2
 2. create a module for layer data and domain
-3. add a repository libary could be Realm
 
 
 
