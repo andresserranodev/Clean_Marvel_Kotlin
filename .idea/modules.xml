@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Clean_Marvel_Kotlin2.iml" filepath="$PROJECT_DIR$/Clean_Marvel_Kotlin2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Clean_Marvel_Kotlin.iml" filepath="$PROJECT_DIR$/Clean_Marvel_Kotlin.iml" />
+      <module fileurl="file://C:\Users\andres.serrano\AndroidStudioProjects\Clean_Marvel_Kotlin\Clean_Marvel_Kotlin2.iml" filepath="C:\Users\andres.serrano\AndroidStudioProjects\Clean_Marvel_Kotlin\Clean_Marvel_Kotlin2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
