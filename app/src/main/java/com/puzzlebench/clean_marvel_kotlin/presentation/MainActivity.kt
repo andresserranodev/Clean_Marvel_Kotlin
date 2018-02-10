@@ -16,6 +16,6 @@ open class MainActivity : BaseRxActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter.int()
+        presenter.init()
     }
 }

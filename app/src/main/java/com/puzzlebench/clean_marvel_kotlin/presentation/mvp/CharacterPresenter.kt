@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 
 class CharacterPresenter(view: CharecterView, private val getChatacterServiceUseCase: GetCharacterServiceUseCase, val subscriptions: CompositeDisposable) : Presenter<CharecterView>(view) {
 
-    fun int() {
+    fun init() {
         view.init()
         requestGetCharacters()
     }

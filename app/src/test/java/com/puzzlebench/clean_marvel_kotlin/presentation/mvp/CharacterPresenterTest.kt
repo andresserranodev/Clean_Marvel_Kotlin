@@ -42,7 +42,8 @@ class CharacterPresenterTest internal constructor() {
 
     @Test
     fun getSubscriptions() {
-        characterPresenter.int()
+        characterPresenter.init()
+        verify(view).init()
         verify(characterServiceImp).getCaracters()
     }
 }
