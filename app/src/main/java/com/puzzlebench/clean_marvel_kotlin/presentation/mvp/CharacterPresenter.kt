@@ -15,8 +15,13 @@ class CharacterPresenter(view: CharecterView, private val getChatacterServiceUse
 
     private fun requestGetCharacters() {
         val subscription = getChatacterServiceUseCase.invoke().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ characters ->
-            view.hideLoading()
-            view.showCharacters(characters)
+            if (characters.isEmpty()) {
+                view.hideLoading()
+                view.showToastNoItemToShow()
+            } else {
+                view.hideLoading()
+                view.showCharacters(characters)
+            }
         }, { e ->
             view.hideLoading()
             view.showToastNetworkError(e.message.toString())

@@ -2,6 +2,7 @@ package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
+import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
@@ -24,6 +25,14 @@ class CharecterView(activity: MainActivity) {
 
     }
 
+    fun showToastNoItemToShow() {
+        val activity = activityRef.get()
+        if (activity != null) {
+            val message = activity.baseContext.resources.getString(R.string.message_no_items_to_show)
+            activity.applicationContext.showToast(message)
+
+        }
+    }
 
     fun showToastNetworkError(error: String) {
         activityRef.get()!!.applicationContext.showToast(error)
