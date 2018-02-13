@@ -7,10 +7,10 @@ import com.puzzlebench.clean_marvel_kotlin.domain.model.Thumbnail
 class CharactersFactory {
 
     companion object Factory {
-        private val BASE_NAME = "Name"
-        private val BASE_DESCRIPTION = "Description"
-        private val BASE_PATH = "image"
-        private val BASE_EXTENSION = ".png"
+        private const val BASE_NAME = "Name"
+        private const val BASE_DESCRIPTION = "Description"
+        private const val BASE_PATH = "image"
+        private const val BASE_EXTENSION = ".png"
 
         open fun getMockCharacter(): List<Character> {
             return (1..5).map {
