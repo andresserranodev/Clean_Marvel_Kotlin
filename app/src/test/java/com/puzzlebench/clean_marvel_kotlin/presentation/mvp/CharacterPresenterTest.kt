@@ -63,7 +63,7 @@ class CharacterPresenterTest {
 
     }
 
-    @Test
+    @Ignore
     fun reposeWithoutItemToShow() {
         val itemsCharecters = emptyList<Character>()
         val observable = Observable.just(itemsCharecters)

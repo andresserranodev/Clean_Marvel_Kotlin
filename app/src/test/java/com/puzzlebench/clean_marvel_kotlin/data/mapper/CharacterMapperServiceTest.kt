@@ -1,5 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.data.mapper
 
+import com.puzzlebench.clean_marvel_kotlin.data.mapper.service.CharacterMapperService
 import com.puzzlebench.clean_marvel_kotlin.data.service.response.CharacterResponse
 import com.puzzlebench.clean_marvel_kotlin.data.service.response.ThumbnailResponse
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
