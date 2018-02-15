@@ -32,10 +32,11 @@ First thing you will need to compile this project is to get an [API Key and hash
 The `Kotlin` plugin for Android Studio is also required.
 
 # TODO:
-1. add detail screen
-2. add commics taps 
-3. add pager scroll
-4. add a repository use Realm
+1. Add the GET /v1/public/characters/{characterId} and the functionality of getting a click on an card image. When the click does occur you should present a Fragment Dialog with a full screen image and all the information related to that image.
+2. Improve the app adding a FloatingActionButton in order to refresh. This FloatingActionButton should call the service and store the data on a database using realm.
+3. Add a Loader and a content provider in order to load the list from the database while the data is being persisted.
+3. Add all the UNIT test for each presenter. Using mockito and robolectric
+
 
 # Code Enhancements:
 
