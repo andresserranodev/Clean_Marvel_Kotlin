@@ -44,11 +44,10 @@ class CharacterPresenterTest {
     }
 
 
-
     @Test
     fun init() {
-        val itemsCharecters = CharactersFactory.getMockListCharacter()
-        val observable = Observable.just(itemsCharecters)
+        val itemsCharacters = CharactersFactory.getMockListCharacter()
+        val observable = Observable.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
         characterPresenter.init()
@@ -56,10 +55,11 @@ class CharacterPresenterTest {
         verify(characterServiceImp).getCaracters()
         verify(characterRepository).getAll()
         verify(view).hideLoading()
-        verify(view).showCharacters(itemsCharecters)
+        verify(view).showCharacters(itemsCharacters)
 
 
     }
+
     @Ignore
     fun reposeWithError() {
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Observable.error(Exception("")))
@@ -73,22 +73,22 @@ class CharacterPresenterTest {
 
     @Ignore
     fun reposeWithItemToShow() {
-        val itemsCharecters = CharactersFactory.getMockListCharacter()
-        val observable = Observable.just(itemsCharecters)
+        val itemsCharacters = CharactersFactory.getMockListCharacter()
+        val observable = Observable.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
         verify(view).hideLoading()
-        verify(view).showCharacters(itemsCharecters)
+        verify(view).showCharacters(itemsCharacters)
 
 
     }
 
     @Ignore
     fun reposeWithoutItemToShow() {
-        val itemsCharecters = emptyList<Character>()
-        val observable = Observable.just(itemsCharecters)
+        val itemsCharacters = emptyList<Character>()
+        val observable = Observable.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
