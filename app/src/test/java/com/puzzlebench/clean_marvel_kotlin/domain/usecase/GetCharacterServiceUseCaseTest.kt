@@ -13,8 +13,8 @@ class GetCharacterServiceUseCaseTest {
 
     @Before
     fun setUp() {
-        val videoItems = CharactersFactory.getMockCharacter()
-        val observable = Observable.just(videoItems)
+        val characterList = CharactersFactory.getMockListCharacter()
+        val observable = Observable.just(characterList)
         characterServiceImp = mock(CharacterServicesImpl::class.java)
         `when`(characterServiceImp.getCaracters()).thenReturn(observable)
 

@@ -1,19 +1,51 @@
 package com.puzzlebench.clean_marvel_kotlin.data.mapper.repository
 
+import com.puzzlebench.clean_marvel_kotlin.data.model.CharacterRealm
+import com.puzzlebench.clean_marvel_kotlin.data.model.ThumbnailRealm
+import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
+import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
+import junit.framework.Assert
+import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
 
-/**
- * Created by andres.serrano on 14/02/2018.
- */
 class CharecterMapperRepositoryTest {
-    @Test
-    fun transform() {
+
+    private lateinit var mapper: CharecterMapperRepository
+
+    @Before
+    fun setUp() {
+        mapper = CharecterMapperRepository()
+
     }
 
     @Test
-    fun transform1() {
+    fun transform() {
+
+
+        val mockThumbnailRealm = ThumbnailRealm(CharactersFactory.BASE_PATH, CharactersFactory.BASE_EXTENSION)
+        val mockCharacterRealm = CharacterRealm(CharactersFactory.BASE_NAME, CharactersFactory.BASE_DESCRIPTION, mockThumbnailRealm)
+        val result = mapper.transform(mockCharacterRealm)
+        assertBufferooDataEquality(mockCharacterRealm, result)
+
+    }
+
+    @Test
+    fun transformToRealm() {
+        val mockCharacter = CharactersFactory.getMockCharacter()
+        val result = mapper.transform(mockCharacter)
+        assertBufferooDataEquality(result, mockCharacter)
+
+    }
+
+
+    private fun assertBufferooDataEquality(characterRealm: CharacterRealm, character: Character) {
+        Assert.assertEquals(characterRealm.name, character.name)
+        Assert.assertEquals(characterRealm.description, character.description)
+        Assert.assertEquals(characterRealm.thumbnail!!.path, character.thumbnail.path)
+        Assert.assertEquals(characterRealm.thumbnail!!.extension, character.thumbnail.extension)
+
+
     }
 
 }

@@ -1,16 +1,27 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
+import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
+import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.Presenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CharacterPresenter(view: CharecterView, private val getChatacterServiceUseCase: GetCharacterServiceUseCase, val subscriptions: CompositeDisposable) : Presenter<CharecterView>(view) {
+class CharacterPresenter(view: CharecterView,
+                         private val getChatacterServiceUseCase: GetCharacterServiceUseCase,
+                         private val getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase, val subscriptions: CompositeDisposable) : Presenter<CharecterView>(view) {
 
+    lateinit var characters: List<Character>
     fun init() {
         view.init()
-        requestGetCharacters()
+        characters = getCharacterRepositoryUseCase.invoke()
+        if (characters.isEmpty()) {
+            requestGetCharacters()
+        } else {
+            view.hideLoading()
+            view.showCharacters(characters)
+        }
     }
 
     private fun requestGetCharacters() {
@@ -18,6 +29,7 @@ class CharacterPresenter(view: CharecterView, private val getChatacterServiceUse
             if (characters.isEmpty()) {
                 view.showToastNoItemToShow()
             } else {
+                getCharacterRepositoryUseCase.invoke(characters)
                 view.showCharacters(characters)
             }
             view.hideLoading()
