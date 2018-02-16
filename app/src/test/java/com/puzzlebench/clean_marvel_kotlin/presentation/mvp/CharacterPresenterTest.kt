@@ -21,7 +21,7 @@ import org.mockito.Mockito.verify
 // error: However, there was exactly 1 interaction with this mock:
 class CharacterPresenterTest {
 
-    private var view = mock(CharecterView::class.java)
+    private var view = mock(CharacterView::class.java)
     private var characterServiceImp = mock(CharacterServicesImpl::class.java)
     private var characterRepository = mock(CharacterRepository::class.java)
 

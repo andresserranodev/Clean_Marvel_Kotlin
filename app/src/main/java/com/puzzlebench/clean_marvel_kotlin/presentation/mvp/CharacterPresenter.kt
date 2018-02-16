@@ -8,9 +8,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CharacterPresenter(view: CharecterView,
+class CharacterPresenter(view: CharacterView,
                          private val getChatacterServiceUseCase: GetCharacterServiceUseCase,
-                         private val getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase, val subscriptions: CompositeDisposable) : Presenter<CharecterView>(view) {
+                         private val getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase, val subscriptions: CompositeDisposable) : Presenter<CharacterView>(view) {
 
     lateinit var characters: List<Character>
     fun init() {

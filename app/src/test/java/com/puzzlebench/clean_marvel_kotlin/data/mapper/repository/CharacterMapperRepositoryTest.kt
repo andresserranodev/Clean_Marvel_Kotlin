@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Test
 
 
-class CharecterMapperRepositoryTest {
+class CharacterMapperRepositoryTest {
 
     private lateinit var mapper: CharacterMapperRepository
 
