@@ -5,7 +5,7 @@ import com.puzzlebench.clean_marvel_kotlin.data.model.ThumbnailRealm
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Thumbnail
 
-class CharecterMapperRepository : BaseMapperRepository<Character, CharacterRealm> {
+class CharacterMapperRepository : BaseMapperRepository<Character, CharacterRealm> {
 
     override fun transform(input: CharacterRealm): Character = Character(input.name!!, input.description!!, transformToThumbnail(input.thumbnail!!))
 

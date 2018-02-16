@@ -11,11 +11,11 @@ import org.junit.Test
 
 class CharecterMapperRepositoryTest {
 
-    private lateinit var mapper: CharecterMapperRepository
+    private lateinit var mapper: CharacterMapperRepository
 
     @Before
     fun setUp() {
-        mapper = CharecterMapperRepository()
+        mapper = CharacterMapperRepository()
 
     }
 
