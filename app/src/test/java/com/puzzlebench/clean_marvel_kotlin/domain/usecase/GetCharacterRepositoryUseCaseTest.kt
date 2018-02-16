@@ -10,19 +10,19 @@ class GetCharacterRepositoryUseCaseTest {
 
     private lateinit var useCase: GetCharacterRepositoryUseCase
 
-    private lateinit var charecterRepository: CharacterRepository
+    private lateinit var characterRepository: CharacterRepository
 
     @Before
     fun setUp() {
-        charecterRepository = Mockito.mock(CharacterRepository::class.java)
-        useCase = GetCharacterRepositoryUseCase(charecterRepository)
+        characterRepository = Mockito.mock(CharacterRepository::class.java)
+        useCase = GetCharacterRepositoryUseCase(characterRepository)
 
     }
 
     @Test
     fun invokeGetAll() {
         useCase.invoke()
-        Mockito.verify(charecterRepository).getAll()
+        Mockito.verify(characterRepository).getAll()
 
     }
 
@@ -30,7 +30,7 @@ class GetCharacterRepositoryUseCaseTest {
     fun invokeSave() {
         val characterList = CharactersFactory.getMockListCharacter()
         useCase.invoke(characterList)
-        Mockito.verify(charecterRepository).save(characterList)
+        Mockito.verify(characterRepository).save(characterList)
     }
 
 }
