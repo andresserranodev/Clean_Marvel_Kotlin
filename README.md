@@ -14,6 +14,9 @@ Follow [Clean Arquitecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-c
 
 [Picasso](https://github.com/square/picasso)
 
+[Realm](https://realm.io/docs/java/latest)
+
+
 ## How it looks
 ![alt text](https://github.com/adsf117/MVP_MARVEL_RX/blob/master/demo_small.gif)
 
@@ -35,7 +38,6 @@ The `Kotlin` plugin for Android Studio is also required.
 1. add detail screen
 2. add commics taps 
 3. add pager scroll
-4. add a repository use Realm
 
 # Code Enhancements:
 
