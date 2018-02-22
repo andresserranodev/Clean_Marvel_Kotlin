@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.data.mapper
+package com.puzzlebench.clean_marvel_kotlin.data.mapper.service
 
 /**
  * Interface for model mappers. It provides helper methods that facilitate
@@ -8,7 +8,7 @@ package com.puzzlebench.clean_marvel_kotlin.data.mapper
  * @param <T> the remote model input type
  * @param <V> the model return type
  */
-interface BaseMapperRepository<E, D> {
+interface BaseMapperService<E, D> {
 
     fun transform(type: E): D
 
