@@ -1,6 +1,16 @@
 # Clean Marvel Kotlin
 Kata Kotlin 
-Follow [Clean Arquitecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html/) and  MVP bases 
+Follow :
+
+[Clean Arquitecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html/)
+
+[MVP](https://antonioleiva.com/mvp-android/) 
+
+[Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) [Using Tavis](https://travis-ci.org/)
+
+# Pending
+[Continuous Delivery](https://martinfowler.com/bliki/ContinuousDelivery.html)
+
 
 ## Using :
 
