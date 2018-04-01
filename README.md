@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/adsf117/Clean_Marvel_Kotlin.svg?branch=master)](https://travis-ci.org/adsf117/Clean_Marvel_Kotlin)
+
 # Clean Marvel Kotlin
 Kata Kotlin 
 Follow :
