@@ -48,8 +48,8 @@ class CharacterPresenterTest {
     fun init() {
         val itemsCharacters = CharactersFactory.getMockListCharacter()
         val observable = Observable.just(itemsCharacters)
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
-        Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
+        //Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
+        //Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
