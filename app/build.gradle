@@ -54,6 +54,15 @@ dependencies {
 
 
 }
+
+android.testOptions.unitTests.all {
+    // Configure whether failing tests should fail the build
+    ignoreFailures false
+
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
 repositories {
     mavenCentral()
 }
