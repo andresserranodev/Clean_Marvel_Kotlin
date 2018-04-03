@@ -43,7 +43,7 @@ class CharacterMapperServiceTest {
     private fun assertBufferooDataEquality(characterResponse: CharacterResponse,
                                            character: Character) {
         Assert.assertEquals(characterResponse.name, character.name)
-        Assert.assertEquals(characterResponse.description, "dasd")
+        Assert.assertEquals(characterResponse.description, character.description)
         Assert.assertEquals(characterResponse.thumbnail.path, character.thumbnail.path)
         Assert.assertEquals(characterResponse.thumbnail.extension, character.thumbnail.extension)
 
