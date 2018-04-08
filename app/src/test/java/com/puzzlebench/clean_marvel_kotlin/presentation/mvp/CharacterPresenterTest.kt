@@ -1,10 +1,10 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
-import com.puzzlebench.clean_marvel_kotlin.data.repository.CharacterRepository
+import com.puzzlebench.clean_marvel_kotlin.data.repository.CharacterDataRepository
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
-import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterRepositoryUseCase
-import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
+import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
+import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
 import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
@@ -23,7 +23,7 @@ class CharacterPresenterTest {
 
     private var view = mock(CharacterView::class.java)
     private var characterServiceImp = mock(CharacterServicesImpl::class.java)
-    private var characterRepository = mock(CharacterRepository::class.java)
+    private var characterRepository = mock(CharacterDataRepository::class.java)
 
     private lateinit var characterPresenter: CharacterPresenter
     private lateinit var getCharacterServiceUseCase: GetCharacterServiceUseCase
@@ -52,7 +52,7 @@ class CharacterPresenterTest {
         Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
         verify(characterRepository).getAll()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharacters)
@@ -65,7 +65,7 @@ class CharacterPresenterTest {
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Observable.error(Exception("")))
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showToastNetworkError("")
 
@@ -78,7 +78,7 @@ class CharacterPresenterTest {
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharacters)
 
@@ -92,7 +92,7 @@ class CharacterPresenterTest {
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
 
 
     }

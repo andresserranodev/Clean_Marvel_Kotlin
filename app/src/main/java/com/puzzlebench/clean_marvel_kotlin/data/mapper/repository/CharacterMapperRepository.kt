@@ -2,8 +2,8 @@ package com.puzzlebench.clean_marvel_kotlin.data.mapper.repository
 
 import com.puzzlebench.clean_marvel_kotlin.data.model.CharacterRealm
 import com.puzzlebench.clean_marvel_kotlin.data.model.ThumbnailRealm
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Thumbnail
+import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.model.Thumbnail
 
 class CharacterMapperRepository : BaseMapperRepository<Character, CharacterRealm> {
 

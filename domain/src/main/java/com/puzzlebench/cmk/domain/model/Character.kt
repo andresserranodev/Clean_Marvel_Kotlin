@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.domain.model
+package com.puzzlebench.cmk.domain.model
 
 class Character(
         val name: String,

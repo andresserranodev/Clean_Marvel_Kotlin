@@ -3,7 +3,8 @@ package com.puzzlebench.clean_marvel_kotlin.data.repository
 import com.puzzlebench.clean_marvel_kotlin.data.mapper.repository.CharacterMapperRepository
 import com.puzzlebench.clean_marvel_kotlin.data.model.CharacterRealm
 import com.puzzlebench.clean_marvel_kotlin.data.repository.source.CharacterDataSource
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
+import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.repository.CharacterRepository
 
 
-class CharacterRepository(dataSource: CharacterDataSource, mapper: CharacterMapperRepository) : BaseRepository<Character, CharacterRealm>(dataSource, mapper)
+class CharacterDataRepository(dataSource: CharacterDataSource, mapper: CharacterMapperRepository) : BaseDataRepository<Character, CharacterRealm>(dataSource, mapper), CharacterRepository

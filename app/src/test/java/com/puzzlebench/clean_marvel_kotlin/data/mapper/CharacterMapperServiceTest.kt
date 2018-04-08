@@ -3,7 +3,7 @@ package com.puzzlebench.clean_marvel_kotlin.data.mapper
 import com.puzzlebench.clean_marvel_kotlin.data.mapper.service.CharacterMapperService
 import com.puzzlebench.clean_marvel_kotlin.data.service.response.CharacterResponse
 import com.puzzlebench.clean_marvel_kotlin.data.service.response.ThumbnailResponse
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
+import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
 import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory.Factory.getMockCharacter
 import junit.framework.Assert

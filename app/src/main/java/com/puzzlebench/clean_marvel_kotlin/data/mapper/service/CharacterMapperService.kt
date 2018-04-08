@@ -2,8 +2,8 @@ package com.puzzlebench.clean_marvel_kotlin.data.mapper.service
 
 import com.puzzlebench.clean_marvel_kotlin.data.service.response.CharacterResponse
 import com.puzzlebench.clean_marvel_kotlin.data.service.response.ThumbnailResponse
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Thumbnail
+import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.model.Thumbnail
 
 
 class CharacterMapperService : BaseMapperService<CharacterResponse, Character> {

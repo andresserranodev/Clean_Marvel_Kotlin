@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.domain.usecase
+package com.puzzlebench.cmk.domain.usecase
 
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
 import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
@@ -16,14 +16,14 @@ class GetCharacterServiceUseCaseTest {
         val characterList = CharactersFactory.getMockListCharacter()
         val observable = Observable.just(characterList)
         characterServiceImp = mock(CharacterServicesImpl::class.java)
-        `when`(characterServiceImp.getCaracters()).thenReturn(observable)
+        `when`(characterServiceImp.getCharacters()).thenReturn(observable)
 
     }
 
     @Test operator fun invoke() {
         val getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
         getCharacterServiceUseCase.invoke()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
     }
 
 }
