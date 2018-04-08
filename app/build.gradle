@@ -15,19 +15,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug {
-            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
-            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
-            buildConfigField "String", "MARVEL_BASE_URL", '"http://gateway.marvel.com/public/"'
-
-        }
 
         release {
             minifyEnabled false
-            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
-            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
-            buildConfigField "String", "MARVEL_BASE_URL", '"http://gateway.marvel.com/public/"'
-
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -49,6 +39,16 @@ dependencies {
     testCompile 'org.mockito:mockito-core:2.10.0'
     testImplementation 'junit:junit:4.12'
     implementation project(':domain')
+    implementation project(':data')
+}
+
+android.testOptions.unitTests.all {
+    // Configure whether failing tests should fail the build
+    ignoreFailures false
+
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
 }
 repositories {
     mavenCentral()

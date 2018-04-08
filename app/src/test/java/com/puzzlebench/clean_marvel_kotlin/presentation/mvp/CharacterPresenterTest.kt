@@ -1,7 +1,7 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
-import com.puzzlebench.clean_marvel_kotlin.data.repository.CharacterDataRepository
-import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
+import com.puzzlebench.cmk.data.repository.CharacterDataRepository
+import com.puzzlebench.cmk.data.service.CharacterServicesImpl
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
