@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.mocks.factory
+package com.puzzlebench.cmk.data.mocks.factory
 
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.model.Thumbnail
@@ -13,7 +13,7 @@ class CharactersFactory {
         const val BASE_EXTENSION = ".png"
 
         fun getMockListCharacter(): List<Character> = listOf(1..5).map {
-            Character("$BASE_NAME$it", "$BASE_DESCRIPTION$it", Thumbnail("$BASE_PATH$it", BASE_EXTENSION))
+            Character("${BASE_NAME}$it", "${BASE_DESCRIPTION}$it", Thumbnail("${BASE_PATH}$it", BASE_EXTENSION))
         }
 
         fun getMockCharacter(): Character {

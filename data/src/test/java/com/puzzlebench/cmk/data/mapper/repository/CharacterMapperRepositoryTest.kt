@@ -1,9 +1,9 @@
 package com.puzzlebench.cmk.data.mapper.repository
 
+import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
 import com.puzzlebench.cmk.data.model.CharacterRealm
 import com.puzzlebench.cmk.data.model.ThumbnailRealm
 import com.puzzlebench.cmk.domain.model.Character
-import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
 import junit.framework.Assert
 import org.junit.Before
 import org.junit.Test

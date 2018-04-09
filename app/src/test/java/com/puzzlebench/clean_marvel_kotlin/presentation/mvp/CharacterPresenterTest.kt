@@ -1,11 +1,10 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
-import com.puzzlebench.cmk.data.repository.CharacterDataRepository
-import com.puzzlebench.cmk.data.service.CharacterServicesImpl
 import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.repository.CharacterRepository
+import com.puzzlebench.cmk.domain.service.CharacterServices
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
-import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
 import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
@@ -22,8 +21,8 @@ import org.mockito.Mockito.verify
 class CharacterPresenterTest {
 
     private var view = mock(CharacterView::class.java)
-    private var characterServiceImp = mock(CharacterServicesImpl::class.java)
-    private var characterRepository = mock(CharacterDataRepository::class.java)
+    private var characterServiceImp = mock(CharacterServices::class.java)
+    private var characterRepository = mock(CharacterRepository::class.java)
 
     private lateinit var characterPresenter: CharacterPresenter
     private lateinit var getCharacterServiceUseCase: GetCharacterServiceUseCase
@@ -46,7 +45,9 @@ class CharacterPresenterTest {
 
     @Test
     fun init() {
-        val itemsCharacters = CharactersFactory.getMockListCharacter()
+        val itemsCharacters = listOf(1..5).map {
+            Mockito.mock(Character::class.java)
+        }
         val observable = Observable.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
@@ -73,7 +74,9 @@ class CharacterPresenterTest {
 
     @Ignore
     fun reposeWithItemToShow() {
-        val itemsCharacters = CharactersFactory.getMockListCharacter()
+        val itemsCharacters = listOf(1..5).map {
+            Mockito.mock(Character::class.java)
+        }
         val observable = Observable.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()

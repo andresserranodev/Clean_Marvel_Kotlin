@@ -25,21 +25,21 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    // Retrofit & OkHttp
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    //event Rx
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.7'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    testCompile 'org.mockito:mockito-core:2.10.0'
-    testImplementation 'junit:junit:4.12'
     implementation project(':domain')
     implementation project(':data')
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //event Rx
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'org.mockito:mockito-core:2.10.0'
+    testImplementation 'junit:junit:4.12'
 }
 
 android.testOptions.unitTests.all {
