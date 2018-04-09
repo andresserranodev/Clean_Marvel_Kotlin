@@ -18,7 +18,7 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
-            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-private-apikey"'
+            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
             buildConfigField "String", "MARVEL_BASE_URL", '"http://gateway.marvel.com/public/"'
 
         }
