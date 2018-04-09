@@ -1,11 +1,10 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
-import com.puzzlebench.clean_marvel_kotlin.data.repository.CharacterRepository
-import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
-import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
-import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterRepositoryUseCase
-import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
-import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
+import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.repository.CharacterRepository
+import com.puzzlebench.cmk.domain.service.CharacterServices
+import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
+import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
 import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
@@ -22,7 +21,7 @@ import org.mockito.Mockito.verify
 class CharacterPresenterTest {
 
     private var view = mock(CharacterView::class.java)
-    private var characterServiceImp = mock(CharacterServicesImpl::class.java)
+    private var characterServiceImp = mock(CharacterServices::class.java)
     private var characterRepository = mock(CharacterRepository::class.java)
 
     private lateinit var characterPresenter: CharacterPresenter
@@ -33,7 +32,7 @@ class CharacterPresenterTest {
     @Before
     fun setUp() {
 
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { _ -> Schedulers.trampoline() }
 
         getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
         getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(characterRepository)
@@ -46,13 +45,15 @@ class CharacterPresenterTest {
 
     @Test
     fun init() {
-        val itemsCharacters = CharactersFactory.getMockListCharacter()
+        val itemsCharacters = listOf(1..5).map {
+            Mockito.mock(Character::class.java)
+        }
         val observable = Observable.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
         verify(characterRepository).getAll()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharacters)
@@ -65,7 +66,7 @@ class CharacterPresenterTest {
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Observable.error(Exception("")))
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showToastNetworkError("")
 
@@ -73,12 +74,14 @@ class CharacterPresenterTest {
 
     @Ignore
     fun reposeWithItemToShow() {
-        val itemsCharacters = CharactersFactory.getMockListCharacter()
+        val itemsCharacters = listOf(1..5).map {
+            Mockito.mock(Character::class.java)
+        }
         val observable = Observable.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharacters)
 
@@ -92,7 +95,7 @@ class CharacterPresenterTest {
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
 
 
     }
