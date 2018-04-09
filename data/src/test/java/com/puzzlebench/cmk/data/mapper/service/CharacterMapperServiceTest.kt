@@ -4,7 +4,7 @@ import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
 import com.puzzlebench.cmk.data.service.response.CharacterResponse
 import com.puzzlebench.cmk.data.service.response.ThumbnailResponse
 import com.puzzlebench.cmk.domain.model.Character
-import junit.framework.Assert
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 

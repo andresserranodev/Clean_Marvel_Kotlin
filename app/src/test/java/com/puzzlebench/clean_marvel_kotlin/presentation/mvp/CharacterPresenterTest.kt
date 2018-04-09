@@ -32,7 +32,7 @@ class CharacterPresenterTest {
     @Before
     fun setUp() {
 
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { _ -> Schedulers.trampoline() }
 
         getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
         getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(characterRepository)

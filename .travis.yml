@@ -37,4 +37,4 @@ before_install:
 
 script:
   - echo "Building app"
-  - ./gradlew app:clean app:testDebugUnitTest app:assembleDebug
+  - ./gradlew clean assembleDebug testDebugUnitTest
