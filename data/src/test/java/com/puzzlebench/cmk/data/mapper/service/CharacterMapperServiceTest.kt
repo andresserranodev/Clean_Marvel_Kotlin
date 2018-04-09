@@ -1,11 +1,9 @@
-package com.puzzlebench.clean_marvel_kotlin.data.mapper
+package com.puzzlebench.cmk.data.mapper.service
 
-import com.puzzlebench.cmk.data.mapper.service.CharacterMapperService
+import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
 import com.puzzlebench.cmk.data.service.response.CharacterResponse
 import com.puzzlebench.cmk.data.service.response.ThumbnailResponse
 import com.puzzlebench.cmk.domain.model.Character
-import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
-import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory.Factory.getMockCharacter
 import junit.framework.Assert
 import org.junit.Before
 import org.junit.Test
@@ -32,7 +30,7 @@ class CharacterMapperServiceTest {
 
     @Test
     fun transformToResponse() {
-        val mockCharacter = getMockCharacter()
+        val mockCharacter = CharactersFactory.getMockCharacter()
         val result = mapper.transformToResponse(mockCharacter)
         assertBufferooDataEquality(result, mockCharacter)
 
