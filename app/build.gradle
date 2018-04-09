@@ -6,11 +6,13 @@ apply plugin: 'realm-android'
 
 
 android {
-    compileSdkVersion 26
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
     defaultConfig {
         applicationId "com.puzzlebench.clean_marvel_kotlin"
-        minSdkVersion 15
-        targetSdkVersion 26
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,21 +31,27 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
-    // Picasso
-    implementation 'com.squareup.picasso:picasso:2.5.2'
-    //event Rx
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
+
+    def generalDependencies = rootProject.ext.generalDependencies
+    def generalTestDependencies = rootProject.ext.generalTestDependencies
+    def appDependencies = rootProject.ext.appDependencies
+
+    implementation generalDependencies.rxAndroid,
+            generalDependencies.rxJava,
+            generalDependencies.appSupport
+
+    implementation appDependencies.picasso,
+            appDependencies.recyclerView,
+            appDependencies.constraintLayout
+
+    testImplementation generalTestDependencies.mockito,
+            generalTestDependencies.junit
+
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
-    testImplementation 'org.mockito:mockito-core:2.10.0'
-    testImplementation 'junit:junit:4.12'
 }
 
 android.testOptions.unitTests.all {
