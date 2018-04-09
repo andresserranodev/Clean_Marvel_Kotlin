@@ -7,7 +7,7 @@ import com.puzzlebench.cmk.domain.service.CharacterServices
 import io.reactivex.Observable
 
 
-class CharacterServicesImpl(private val api: MarvelResquestGenerator = MarvelResquestGenerator(), private val mapper: CharacterMapperService = CharacterMapperService()) : CharacterServices {
+class CharacterServicesImpl(private val api: MarvelRequestGenerator = MarvelRequestGenerator(), private val mapper: CharacterMapperService = CharacterMapperService()) : CharacterServices {
     override fun getCharacters(): Observable<List<Character>> {
         return Observable.create { subscriber ->
             val callResponse = api.createService(MarvelApi::class.java).getCharacter()
