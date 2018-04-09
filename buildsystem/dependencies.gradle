@@ -5,13 +5,13 @@ ext {
     androidCompileSdkVersion = 26
 
     //Genral dependencies version
-    appSupportVersion = '27.1.1'
+    appSupportVersion = '26.1.0'
     rxAndroidVersion = '2.0.1'
     rxJavaVersion = '2.1.7'
 
     //app dependencies version
     picassoVersion = '2.5.2'
-    recyclerViewVersion = '27.1.1'
+    recyclerViewVersion = '26.1.0'
     constraintLayoutVersion = '1.0.2'
 
     //data dependencies version
