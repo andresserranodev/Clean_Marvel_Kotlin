@@ -17,8 +17,8 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
-            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
+            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"d6e634e314a819ca1c0f0078344acb70"'
+            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"504e22423d24b530dd878fdf808fc001"'
             buildConfigField "String", "MARVEL_BASE_URL", '"http://gateway.marvel.com/public/"'
 
         }
@@ -45,18 +45,16 @@ dependencies {
 
     implementation generalDependencies.rxAndroid,
             generalDependencies.rxJava,
-            generalDependencies.appSupport
+            generalDependencies.appSupport,
+            generalDependencies.kotlin
 
 
-    testImplementation generalTestDependencies.junit
+
+    testImplementation generalTestDependencies.junit,
+            generalTestDependencies.kotlinTest
 
     compile dataDependencies.retrofit,
             dataDependencies.retrofitConverter
-
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
 }
 

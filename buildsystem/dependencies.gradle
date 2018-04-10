@@ -25,27 +25,31 @@ ext {
 
 
     generalDependencies = [
-            rxAndroid            : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-            rxJava               : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            appSupport           : "com.android.support:appcompat-v7:${appSupportVersion}"
+            rxAndroid           : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJava              : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            appSupport          : "com.android.support:appcompat-v7:${appSupportVersion}",
+            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+
 
     ]
 
     generalTestDependencies = [
-            mockito              : "org.mockito:mockito-core:${mockitoVersion}",
-            junit                : "junit:junit:${jUnitVersion}"
+            mockito             : "org.mockito:mockito-core:${mockitoVersion}",
+            junit               : "junit:junit:${jUnitVersion}",
+            kotlinTest          : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+
     ]
 
     appDependencies = [
-            picasso            : "com.squareup.picasso:picasso:${picassoVersion}",
-            recyclerView       : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
-            constraintLayout   : "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+            picasso             : "com.squareup.picasso:picasso:${picassoVersion}",
+            recyclerView        : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+            constraintLayout    : "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
 
     ]
 
     dataDependencies = [
-            retrofit          : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            retrofitConverter      : "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
+            retrofit            : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter   : "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
 
     ]
 
