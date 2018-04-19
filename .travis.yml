@@ -18,6 +18,8 @@ env:
    - ANDROID_BUILD_TOOLS=27.0.3
    - ADB_INSTALL_TIMEOUT=5 # minutes
    - ANDROID_TARGET=android-15
+  - ANDROID_ABI=armeabi-v7a
+
 
 android:
  components:
