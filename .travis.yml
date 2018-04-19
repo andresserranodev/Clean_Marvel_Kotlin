@@ -17,6 +17,8 @@ env:
    - EMULATOR_API=21
    - ANDROID_BUILD_TOOLS=27.0.3
    - ADB_INSTALL_TIMEOUT=5 # minutes
+   - ANDROID_TARGET=android-15
+
 android:
  components:
    - tools
@@ -28,6 +30,7 @@ android:
    - extra-google-m2repository
    - extra-google-google_play_services
    - addon-google_apis-google-19 # google play services
+   - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
    
 script:
   - "./gradlew jacocoTestReport"
