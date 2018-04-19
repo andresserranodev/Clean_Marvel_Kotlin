@@ -28,6 +28,9 @@ android:
    - extra-google-m2repository
    - extra-google-google_play_services
    - addon-google_apis-google-19 # google play services
+   
+script:
+  - "./gradlew jacocoTestReport"
 
 before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
