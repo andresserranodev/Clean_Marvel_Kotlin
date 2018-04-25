@@ -53,8 +53,10 @@ dependencies {
     testImplementation generalTestDependencies.junit,
             generalTestDependencies.kotlinTest
 
-    compile dataDependencies.retrofit,
-            dataDependencies.retrofitConverter
+    implementation dataDependencies.retrofit,
+            dataDependencies.retrofitConverter,
+            dataDependencies.okhttp,
+            dataDependencies.okhttpLoggingInterceptor
 
 }
 
