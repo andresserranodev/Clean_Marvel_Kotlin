@@ -55,8 +55,6 @@ The `Kotlin` plugin for Android Studio is also required.
 # Code Enhancements:
 
 1. Add Dagger2
-2. create a module for layer data and domain
-
 
 
 ## Sources

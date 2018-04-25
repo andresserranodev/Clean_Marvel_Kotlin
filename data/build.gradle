@@ -5,21 +5,20 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 26
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 26
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
-
     buildTypes {
         debug {
-            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
-            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
+            buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"d6e634e314a819ca1c0f0078344acb70"'
+            buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"504e22423d24b530dd878fdf808fc001"'
             buildConfigField "String", "MARVEL_BASE_URL", '"http://gateway.marvel.com/public/"'
 
         }
@@ -40,26 +39,23 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':domain')
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    def generalDependencies = rootProject.ext.generalDependencies
+    def dataDependencies = rootProject.ext.dataDependencies
+    def generalTestDependencies = rootProject.ext.generalTestDependencies
 
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    implementation generalDependencies.rxAndroid,
+            generalDependencies.rxJava,
+            generalDependencies.appSupport,
+            generalDependencies.kotlin
 
-    // RX
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
 
-    // Retrofit & OkHttp
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation generalTestDependencies.junit,
+            generalTestDependencies.kotlinTest
+
+    compile dataDependencies.retrofit,
+            dataDependencies.retrofitConverter
+
 }
 
 android.testOptions.unitTests.all {

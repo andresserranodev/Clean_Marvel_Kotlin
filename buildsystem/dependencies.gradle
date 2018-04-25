@@ -1,0 +1,57 @@
+ext {
+    //Android
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 26
+    androidCompileSdkVersion = 26
+
+    //Genral dependencies version
+    appSupportVersion = '26.1.0'
+    rxAndroidVersion = '2.0.1'
+    rxJavaVersion = '2.1.7'
+
+    //app dependencies version
+    picassoVersion = '2.5.2'
+    recyclerViewVersion = '26.1.0'
+    constraintLayoutVersion = '1.0.2'
+
+    //data dependencies version
+    retrofitVersion = '2.3.0'
+    retrofitConverterGsonVersion = '2.3.0'
+
+    //test dependencies
+    mockitoVersion = '2.10.0'
+    jUnitVersion = '4.12'
+
+
+
+    generalDependencies = [
+            rxAndroid           : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJava              : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            appSupport          : "com.android.support:appcompat-v7:${appSupportVersion}",
+            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+
+
+    ]
+
+    generalTestDependencies = [
+            mockito             : "org.mockito:mockito-core:${mockitoVersion}",
+            junit               : "junit:junit:${jUnitVersion}",
+            kotlinTest          : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+
+    ]
+
+    appDependencies = [
+            picasso             : "com.squareup.picasso:picasso:${picassoVersion}",
+            recyclerView        : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+            constraintLayout    : "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+
+    ]
+
+    dataDependencies = [
+            retrofit            : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter   : "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
+
+    ]
+
+
+}
