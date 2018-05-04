@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Clean_Marvel_Kotlin</string>
     <string name="message_no_items_to_show">No items to show</string>
+    <string name="content_description_hero_image">hero Image</string>
 </resources>

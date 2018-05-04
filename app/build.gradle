@@ -6,6 +6,9 @@ apply plugin: 'jacoco-android'
 
 
 android {
+    lintOptions {
+        ignoreWarnings true
+    }
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
@@ -28,6 +31,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
