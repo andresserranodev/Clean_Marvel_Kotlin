@@ -4,8 +4,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'jacoco-android'
 
-
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     lintOptions {
         ignoreWarnings true
     }
@@ -68,6 +71,7 @@ android.testOptions.unitTests.all {
         events "passed", "skipped", "failed", "standardOut", "standardError"
     }
 }
+
 repositories {
     mavenCentral()
 }

@@ -4,8 +4,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'realm-android'
 apply plugin: 'jacoco-android'
+apply plugin: 'com.github.kt3k.coveralls'
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
@@ -57,6 +62,22 @@ dependencies {
     implementation dataDependencies.retrofit,
             dataDependencies.retrofitConverter
 
+}
+coveralls {
+    sourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs).files.absolutePath
+}
+
+task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
+    dependsOn = subprojects.test
+    sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
+    classDirectories = files(subprojects.sourceSets.main.output)
+    executionData = files(subprojects.jacocoTestReport.executionData)
+    reports {
+        html.enabled = true
+        xml.enabled = true
+        csv.enabled = false
+        xml.destination = "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
+    }
 }
 
 android.testOptions.unitTests.all {

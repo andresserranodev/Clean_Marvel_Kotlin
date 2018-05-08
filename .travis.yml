@@ -47,5 +47,5 @@ script:
   - ./gradlew build jacocoTestReport
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t 0b7b2eca-8f20-4652-af55-a1380d654a83
+- ./gradlew cobertura coveralls
 
