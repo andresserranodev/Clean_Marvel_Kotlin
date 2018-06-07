@@ -6,6 +6,7 @@ import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUse
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.Presenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 class CharacterPresenter(view: CharacterView,
@@ -25,6 +26,7 @@ class CharacterPresenter(view: CharacterView,
     }
 
     private fun requestGetCharacters() {
+
         val subscription = getChatacterServiceUseCase.invoke().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ characters ->
             if (characters.isEmpty()) {
                 view.showToastNoItemToShow()
@@ -39,5 +41,18 @@ class CharacterPresenter(view: CharacterView,
             view.showToastNetworkError(e.message.toString())
         })
         subscriptions.add(subscription)
+    }
+
+    inner class CharecterSubscriber : DisposableSingleObserver<List<Character>>() {
+
+        override fun onSuccess(t: List<Character>) {
+            view.showCharacters(t)
+        }
+
+        override fun onError(exception: Throwable) {
+            view.hideLoading()
+            view.showToastNetworkError(exception.message.toString())
+        }
+
     }
 }
