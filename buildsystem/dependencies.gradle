@@ -15,8 +15,8 @@ ext {
     constraintLayoutVersion = '1.0.2'
 
     //data dependencies version
-    retrofitVersion = '2.3.0'
-    retrofitConverterGsonVersion = '2.3.0'
+    retrofitVersion = '2.4.0'
+    retrofitConverterGsonVersion = '2.4.0'
 
     //test dependencies
     mockitoVersion = '2.10.0'
