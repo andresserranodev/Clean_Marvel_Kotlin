@@ -2,7 +2,6 @@ package com.puzzlebench.cmk.domain.usecase
 
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.service.CharacterServices
-import io.reactivex.Observable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -24,7 +23,8 @@ class GetCharacterServiceUseCaseTest {
 
     }
 
-    @Test operator fun invoke() {
+    @Test
+    operator fun invoke() {
         val getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
         getCharacterServiceUseCase.invoke()
         verify(characterServiceImp).getCharacters()
