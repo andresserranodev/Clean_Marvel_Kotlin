@@ -5,7 +5,6 @@ import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import com.puzzlebench.cmk.domain.service.CharacterServices
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
-import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
