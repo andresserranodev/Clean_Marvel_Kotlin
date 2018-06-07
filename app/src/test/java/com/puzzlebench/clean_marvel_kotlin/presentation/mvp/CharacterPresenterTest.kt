@@ -6,6 +6,7 @@ import com.puzzlebench.cmk.domain.service.CharacterServices
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -48,7 +49,7 @@ class CharacterPresenterTest {
         val itemsCharacters = listOf(1..5).map {
             Mockito.mock(Character::class.java)
         }
-        val observable = Observable.just(itemsCharacters)
+        val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
         characterPresenter.init()
@@ -63,7 +64,7 @@ class CharacterPresenterTest {
 
     @Ignore
     fun reposeWithError() {
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Observable.error(Exception("")))
+        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception("")))
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCharacters()
@@ -77,7 +78,7 @@ class CharacterPresenterTest {
         val itemsCharacters = listOf(1..5).map {
             Mockito.mock(Character::class.java)
         }
-        val observable = Observable.just(itemsCharacters)
+        val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
@@ -91,7 +92,7 @@ class CharacterPresenterTest {
     @Ignore
     fun reposeWithoutItemToShow() {
         val itemsCharacters = emptyList<Character>()
-        val observable = Observable.just(itemsCharacters)
+        val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
