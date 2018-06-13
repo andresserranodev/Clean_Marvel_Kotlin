@@ -6,7 +6,7 @@ import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
-import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -34,7 +34,6 @@ class CharacterPresenterTest {
     fun setUp() {
 
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
-
         getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
         getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(characterRepository)
         val subscriptions = mock(CompositeDisposable::class.java)
@@ -47,7 +46,7 @@ class CharacterPresenterTest {
     @Test
     fun init() {
         val itemsCharacters = CharactersFactory.getMockListCharacter()
-        val observable = Observable.just(itemsCharacters)
+        val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
         characterPresenter.init()
@@ -62,7 +61,7 @@ class CharacterPresenterTest {
 
     @Ignore
     fun reposeWithError() {
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Observable.error(Exception("")))
+        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception("")))
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
@@ -74,7 +73,7 @@ class CharacterPresenterTest {
     @Ignore
     fun reposeWithItemToShow() {
         val itemsCharacters = CharactersFactory.getMockListCharacter()
-        val observable = Observable.just(itemsCharacters)
+        val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
@@ -88,7 +87,7 @@ class CharacterPresenterTest {
     @Ignore
     fun reposeWithoutItemToShow() {
         val itemsCharacters = emptyList<Character>()
-        val observable = Observable.just(itemsCharacters)
+        val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()

@@ -3,6 +3,7 @@ package com.puzzlebench.clean_marvel_kotlin.domain.usecase
 import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
 import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
 import io.reactivex.Observable
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.*
@@ -14,7 +15,7 @@ class GetCharacterServiceUseCaseTest {
     @Before
     fun setUp() {
         val characterList = CharactersFactory.getMockListCharacter()
-        val observable = Observable.just(characterList)
+        val observable = Single.just(characterList)
         characterServiceImp = mock(CharacterServicesImpl::class.java)
         `when`(characterServiceImp.getCaracters()).thenReturn(observable)
 
