@@ -48,13 +48,12 @@ dependencies {
             generalDependencies.appSupport,
             generalDependencies.kotlin
 
-
-
     testImplementation generalTestDependencies.junit,
             generalTestDependencies.kotlinTest
 
-    compile dataDependencies.retrofit,
-            dataDependencies.retrofitConverter
+    implementation dataDependencies.retrofit,
+            dataDependencies.retrofitConverter,
+            dataDependencies.retrofitAdapterRX
 
 }
 

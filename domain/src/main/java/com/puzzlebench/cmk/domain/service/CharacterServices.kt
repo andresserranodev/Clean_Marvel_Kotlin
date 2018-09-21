@@ -1,8 +1,8 @@
 package com.puzzlebench.cmk.domain.service
 
 import com.puzzlebench.cmk.domain.model.Character
-import io.reactivex.Observable
+import io.reactivex.Single
 
 interface CharacterServices {
-    fun getCharacters(): Observable<List<Character>>
+    fun getCharacters(): Single<List<Character>>
 }

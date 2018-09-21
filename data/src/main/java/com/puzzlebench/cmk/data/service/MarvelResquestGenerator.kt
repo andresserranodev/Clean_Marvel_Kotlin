@@ -3,6 +3,7 @@ package com.puzzlebench.cmk.data.service
 import com.puzzlebench.cmk.data.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
@@ -28,6 +29,7 @@ class MarvelResquestGenerator {
 
     private val builder = Retrofit.Builder()
             .baseUrl(BuildConfig.MARVEL_BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
 
     fun <S> createService(serviceClass: Class<S>): S {

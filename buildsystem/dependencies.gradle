@@ -17,6 +17,7 @@ ext {
     //data dependencies version
     retrofitVersion = '2.4.0'
     retrofitConverterGsonVersion = '2.4.0'
+    retrofitAdapterRXVersion = '2.4.0'
 
     //test dependencies
     mockitoVersion = '2.10.0'
@@ -25,31 +26,32 @@ ext {
 
 
     generalDependencies = [
-            rxAndroid           : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-            rxJava              : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            appSupport          : "com.android.support:appcompat-v7:${appSupportVersion}",
-            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+            rxAndroid : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJava    : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            appSupport: "com.android.support:appcompat-v7:${appSupportVersion}",
+            kotlin    : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
 
 
     ]
 
     generalTestDependencies = [
-            mockito             : "org.mockito:mockito-core:${mockitoVersion}",
-            junit               : "junit:junit:${jUnitVersion}",
-            kotlinTest          : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+            mockito   : "org.mockito:mockito-core:${mockitoVersion}",
+            junit     : "junit:junit:${jUnitVersion}",
+            kotlinTest: "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
 
     ]
 
     appDependencies = [
-            picasso             : "com.squareup.picasso:picasso:${picassoVersion}",
-            recyclerView        : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
-            constraintLayout    : "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+            picasso         : "com.squareup.picasso:picasso:${picassoVersion}",
+            recyclerView    : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+            constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
 
     ]
 
     dataDependencies = [
-            retrofit            : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            retrofitConverter   : "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
+            retrofit         : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter: "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
+            retrofitAdapterRX: "com.squareup.retrofit2:adapter-rxjava2:${retrofitAdapterRXVersion}"
 
     ]
 
