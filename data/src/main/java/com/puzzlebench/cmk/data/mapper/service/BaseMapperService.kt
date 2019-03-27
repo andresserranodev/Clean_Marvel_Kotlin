@@ -13,5 +13,4 @@ interface BaseMapperService<E, D> {
     fun transform(type: E): D
 
     fun transformToResponse(type: D): E
-
 }

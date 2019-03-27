@@ -1,6 +1,7 @@
 package com.puzzlebench.cmk.data.service
 
 import com.puzzlebench.cmk.data.BuildConfig
+import com.puzzlebench.cmk.data.service.api.MarvelApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -32,8 +33,19 @@ class MarvelResquestGenerator {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
 
-    fun <S> createService(serviceClass: Class<S>): S {
-        val retrofit = builder.client(httpClient.build()).build()
-        return retrofit.create(serviceClass)
+
+    private fun makeMarvelService(okHttpClient: OkHttpClient): MarvelApi {
+        val retrofit = Retrofit.Builder()
+                .baseUrl(BuildConfig.MARVEL_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+        return retrofit.create(MarvelApi::class.java)
+    }
+
+    fun makeMarvelService(): MarvelApi {
+        val okHttpClient = httpClient.build()
+        return makeMarvelService(okHttpClient)
     }
 }
