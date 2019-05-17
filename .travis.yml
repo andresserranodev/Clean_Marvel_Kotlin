@@ -32,9 +32,10 @@ android:
      - build-tools-26.0.2
      # The SDK version used to compile the project
      - android-26
-  licenses:
-       - 'android-sdk-license-.+'
-       - '.+'
+   licenses:
+     - 'android-sdk-preview-license-52d11cd2'
+     - 'android-sdk-license-.+'
+     - 'google-gdk-license-.+'
 
 before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
