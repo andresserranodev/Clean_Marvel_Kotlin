@@ -11,13 +11,19 @@ import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView
+import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
 
-open class MainActivity : BaseRxActivity() {
+class MainActivity : BaseRxActivity() {
 
-    val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
-    val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSource(), CharacterMapperRepository()))
+    private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+    private val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSource(), CharacterMapperRepository()))
+    private val saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSource(), CharacterMapperRepository()))
 
-    val presenter = CharacterPresenter(CharacterView(this), getCharacterServiceUseCase, getCharacterRepositoryUseCase, subscriptions)
+    private val presenter = CharacterPresenter(CharacterView(this),
+            getCharacterServiceUseCase,
+            getCharacterRepositoryUseCase,
+            saveCharacterRepositoryUseCase,
+            subscriptions)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
