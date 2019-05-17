@@ -22,7 +22,7 @@ ext {
     //test dependencies
     mockitoVersion = '2.10.0'
     jUnitVersion = '4.12'
-
+    mockitoInlineVersion = '2.18.3'
 
 
     generalDependencies = [
@@ -30,29 +30,25 @@ ext {
             rxJava    : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
             appSupport: "com.android.support:appcompat-v7:${appSupportVersion}",
             kotlin    : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
-
-
     ]
 
     generalTestDependencies = [
-            mockito   : "org.mockito:mockito-core:${mockitoVersion}",
-            junit     : "junit:junit:${jUnitVersion}",
-            kotlinTest: "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
-
+            mockito      : "org.mockito:mockito-core:${mockitoVersion}",
+            junit        : "junit:junit:${jUnitVersion}",
+            kotlinTest   : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+            mockitoInline: "org.mockito:mockito-inline:${mockitoInlineVersion}",
     ]
 
     appDependencies = [
             picasso         : "com.squareup.picasso:picasso:${picassoVersion}",
             recyclerView    : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
             constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
-
     ]
 
     dataDependencies = [
             retrofit         : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofitConverter: "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
             retrofitAdapterRX: "com.squareup.retrofit2:adapter-rxjava2:${retrofitAdapterRXVersion}"
-
     ]
 
 

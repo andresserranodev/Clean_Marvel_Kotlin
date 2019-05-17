@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
 import com.puzzlebench.cmk.data.repository.CharacterDataRepository
-import com.puzzlebench.cmk.data.repository.source.CharacterDataSource
+import com.puzzlebench.cmk.data.repository.source.CharacterDataSourceImpl
 import com.puzzlebench.cmk.data.service.CharacterServicesImpl
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
@@ -16,8 +16,8 @@ import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
 class MainActivity : BaseRxActivity() {
 
     private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
-    private val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSource(), CharacterMapperRepository()))
-    private val saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSource(), CharacterMapperRepository()))
+    private val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
+    private val saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
 
     private val presenter = CharacterPresenter(CharacterView(this),
             getCharacterServiceUseCase,

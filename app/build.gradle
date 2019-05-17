@@ -47,7 +47,9 @@ dependencies {
 
     testImplementation generalTestDependencies.mockito,
             generalTestDependencies.junit,
+            generalTestDependencies.mockitoInline,
             generalTestDependencies.kotlinTest
+
 
 }
 
