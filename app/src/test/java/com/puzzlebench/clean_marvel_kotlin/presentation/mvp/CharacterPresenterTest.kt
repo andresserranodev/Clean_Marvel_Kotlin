@@ -5,6 +5,7 @@ import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import com.puzzlebench.cmk.domain.service.CharacterServices
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
+import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
@@ -27,17 +28,22 @@ class CharacterPresenterTest {
     private lateinit var characterPresenter: CharacterPresenter
     private lateinit var getCharacterServiceUseCase: GetCharacterServiceUseCase
     private lateinit var getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase
+    private lateinit var saveCharacterRepositoryUseCase: SaveCharacterRepositoryUseCase
 
 
     @Before
     fun setUp() {
 
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { _ -> Schedulers.trampoline() }
-
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
         getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(characterRepository)
+        saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(characterRepository)
         val subscriptions = mock(CompositeDisposable::class.java)
-        characterPresenter = CharacterPresenter(view, getCharacterServiceUseCase, getCharacterRepositoryUseCase, subscriptions)
+        characterPresenter = CharacterPresenter(view,
+                getCharacterServiceUseCase,
+                getCharacterRepositoryUseCase,
+                saveCharacterRepositoryUseCase,
+                subscriptions)
 
 
     }
@@ -46,7 +52,7 @@ class CharacterPresenterTest {
     @Test
     fun init() {
         val itemsCharacters = listOf(1..5).map {
-            Mockito.mock(Character::class.java)
+            mock(Character::class.java)
         }
         val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
@@ -75,7 +81,7 @@ class CharacterPresenterTest {
     @Ignore
     fun reposeWithItemToShow() {
         val itemsCharacters = listOf(1..5).map {
-            Mockito.mock(Character::class.java)
+            mock(Character::class.java)
         }
         val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)

@@ -9,9 +9,9 @@ class CharacterMapperRepository : BaseMapperRepository<Character, CharacterRealm
 
     override fun transform(input: CharacterRealm): Character = Character(input.name!!, input.description!!, transformToThumbnail(input.thumbnail!!))
 
-    override fun transform(input: Character): CharacterRealm = CharacterRealm(input.name, input.description, transformToThumbnaiRealm(input.thumbnail))
+    override fun transform(input: Character): CharacterRealm = CharacterRealm(input.name, input.description, transformToThumbnailRealm(input.thumbnail))
 
-    fun transformToThumbnail(thumbnailRealm: ThumbnailRealm): Thumbnail = Thumbnail(thumbnailRealm.path!!, thumbnailRealm.extension!!)
+    private fun transformToThumbnail(thumbnailRealm: ThumbnailRealm): Thumbnail = Thumbnail(thumbnailRealm.path!!, thumbnailRealm.extension!!)
 
-    fun transformToThumbnaiRealm(thumbnail: Thumbnail): ThumbnailRealm = ThumbnailRealm(thumbnail.path!!, thumbnail.extension!!)
+    private fun transformToThumbnailRealm(thumbnail: Thumbnail): ThumbnailRealm = ThumbnailRealm(thumbnail.path, thumbnail.extension)
 }

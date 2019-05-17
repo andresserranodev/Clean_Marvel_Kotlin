@@ -4,20 +4,26 @@ import android.os.Bundle
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
 import com.puzzlebench.cmk.data.repository.CharacterDataRepository
-import com.puzzlebench.cmk.data.repository.source.CharacterDataSource
+import com.puzzlebench.cmk.data.repository.source.CharacterDataSourceImpl
 import com.puzzlebench.cmk.data.service.CharacterServicesImpl
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView
+import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
 
-open class MainActivity : BaseRxActivity() {
+class MainActivity : BaseRxActivity() {
 
-    val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
-    val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSource(), CharacterMapperRepository()))
+    private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+    private val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
+    private val saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
 
-    val presenter = CharacterPresenter(CharacterView(this), getCharacterServiceUseCase, getCharacterRepositoryUseCase, subscriptions)
+    private val presenter = CharacterPresenter(CharacterView(this),
+            getCharacterServiceUseCase,
+            getCharacterRepositoryUseCase,
+            saveCharacterRepositoryUseCase,
+            subscriptions)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

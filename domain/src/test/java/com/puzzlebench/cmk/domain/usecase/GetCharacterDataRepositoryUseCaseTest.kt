@@ -1,6 +1,5 @@
 package com.puzzlebench.cmk.domain.usecase
 
-import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import org.junit.Before
 import org.junit.Test
@@ -25,14 +24,4 @@ class GetCharacterDataRepositoryUseCaseTest {
         Mockito.verify(characterDataRepository).getAll()
 
     }
-
-    @Test
-    fun invokeSave() {
-        val characterList = listOf(1..5).map {
-            Mockito.mock(Character::class.java)
-        }
-        useCase.invoke(characterList)
-        Mockito.verify(characterDataRepository).save(characterList)
-    }
-
 }

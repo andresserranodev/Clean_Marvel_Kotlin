@@ -2,5 +2,7 @@ package com.puzzlebench.cmk.data.repository.source
 
 import com.puzzlebench.cmk.data.model.CharacterRealm
 
-
-class CharacterDataSource : DataSource<CharacterRealm>(CharacterRealm::class.java)
+interface CharacterDataSource {
+    fun getAllCharacters(): List<CharacterRealm>
+    fun saveCharacters(c: List<CharacterRealm>)
+}
