@@ -10,10 +10,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class CharacterPresenter constructor(view: CharacterView,
-                         private val getCharacterServiceUseCase: GetCharacterServiceUseCase,
-                         private val getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase,
-                         private val saveCharacterRepositoryUseCase: SaveCharacterRepositoryUseCase,
-                         val subscriptions: CompositeDisposable) : Presenter<CharacterView>(view) {
+                                     private val getCharacterServiceUseCase: GetCharacterServiceUseCase,
+                                     private val getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase,
+                                     private val saveCharacterRepositoryUseCase: SaveCharacterRepositoryUseCase,
+                                     private val subscriptions: CompositeDisposable) : Presenter<CharacterView>(view) {
 
     lateinit var characters: List<Character>
     fun init() {
@@ -28,7 +28,10 @@ class CharacterPresenter constructor(view: CharacterView,
     }
 
     private fun requestGetCharacters() {
-        val subscription = getCharacterServiceUseCase.invoke().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ characters ->
+        val subscription = getCharacterServiceUseCase.invoke()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ characters ->
             if (characters.isEmpty()) {
                 view.showToastNoItemToShow()
             } else {

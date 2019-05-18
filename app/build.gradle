@@ -43,7 +43,8 @@ dependencies {
 
     implementation appDependencies.picasso,
             appDependencies.recyclerView,
-            appDependencies.constraintLayout
+            appDependencies.constraintLayout,
+            appDependencies.lifecycleExtensions
 
     testImplementation generalTestDependencies.mockito,
             generalTestDependencies.junit,

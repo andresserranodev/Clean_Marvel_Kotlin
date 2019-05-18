@@ -13,6 +13,8 @@ ext {
     picassoVersion = '2.5.2'
     recyclerViewVersion = '26.1.0'
     constraintLayoutVersion = '1.0.2'
+    lifecycleVersion = '1.1.1'
+
 
     //data dependencies version
     retrofitVersion = '2.4.0'
@@ -42,7 +44,9 @@ ext {
     appDependencies = [
             picasso         : "com.squareup.picasso:picasso:${picassoVersion}",
             recyclerView    : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
-            constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}"
+            constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
+            lifecycleExtensions: "android.arch.lifecycle:extensions:${lifecycleVersion}"
+
     ]
 
     dataDependencies = [
