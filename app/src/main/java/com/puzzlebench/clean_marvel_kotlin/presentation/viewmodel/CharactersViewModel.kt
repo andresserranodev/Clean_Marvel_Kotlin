@@ -25,9 +25,11 @@ class CharactersViewModel(private val useCase: GetCharacterServiceUseCase) : Vie
                 val subscription = useCase.invoke()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe { characters ->
+                        .subscribe({ characters ->
                             onItemsLoaded(characters)
-                        }
+                        }, { error ->
+                            showError(error.message.toString())
+                        })
                 subscriptions.add(subscription)
             }
             return _charactersViewState
@@ -37,6 +39,10 @@ class CharactersViewModel(private val useCase: GetCharacterServiceUseCase) : Vie
         _charactersViewState.value = ScreenState.Render(CharactersViewState.ShowItems(items))
     }
 
+    private fun showError(message: String) {
+        _charactersViewState.value = ScreenState.Render(CharactersViewState.ShowMessage(message))
+    }
+
     override fun onCleared() {
         subscriptions.dispose()
         super.onCleared()
@@ -44,7 +50,7 @@ class CharactersViewModel(private val useCase: GetCharacterServiceUseCase) : Vie
 }
 
 @Suppress("UNCHECKED_CAST")
-class CharectersViewModelFactory(private val useCase: GetCharacterServiceUseCase) :
+class CharactersViewModelFactory(private val useCase: GetCharacterServiceUseCase) :
         ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return CharactersViewModel(useCase) as T

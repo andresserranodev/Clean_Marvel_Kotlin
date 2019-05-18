@@ -10,7 +10,7 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
 import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.CharactersViewModel
 import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.CharactersViewState
-import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.CharectersViewModelFactory
+import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.CharactersViewModelFactory
 import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.ScreenState
 import com.puzzlebench.cmk.data.service.CharacterServicesImpl
 import com.puzzlebench.cmk.domain.model.Character
@@ -32,7 +32,7 @@ class MainActivityMVVM : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProviders.of(
                 this,
-                CharectersViewModelFactory(getCharacterServiceUseCase)
+                CharactersViewModelFactory(getCharacterServiceUseCase)
         )[CharactersViewModel::class.java]
         viewModel.mainState.observe(::getLifecycle, ::updateUI)
         recycleView.layoutManager = GridLayoutManager(this, count)
@@ -51,6 +51,8 @@ class MainActivityMVVM : AppCompatActivity() {
         hideProgress()
         when (renderState) {
             is CharactersViewState.ShowItems -> showCharacters(renderState.items)
+            is CharactersViewState.ShowMessage -> this.showToast(renderState.message)
+
         }
     }
 
