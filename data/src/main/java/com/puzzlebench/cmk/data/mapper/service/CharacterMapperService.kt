@@ -22,17 +22,6 @@ class CharacterMapperService : BaseMapperService<CharacterResponse, MarvelCard> 
             transformToThumbnailResponse(type.thumbnail)
     )
 
-    fun transformToThumbnail(thumbnailResponse: ThumbnailResponse): Thumbnail
-            = Thumbnail(
-            thumbnailResponse.path,
-            thumbnailResponse.extension
-    )
-
-    fun transformToThumbnailResponse(thumbnail: Thumbnail): ThumbnailResponse
-            = ThumbnailResponse(
-            thumbnail.path,
-            thumbnail.extension
-    )
 
     fun transform(charactersResponse: List<CharacterResponse>): List<MarvelCard>
             = charactersResponse.map { transform(it) }

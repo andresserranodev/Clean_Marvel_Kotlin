@@ -14,10 +14,12 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.CharactersView
 import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.ScreenState
 import com.puzzlebench.cmk.data.service.CharacterServicesImpl
 import com.puzzlebench.cmk.data.service.ComicSerivicesImpl
+import com.puzzlebench.cmk.data.service.CreatorsServiceImpl
 import com.puzzlebench.cmk.domain.model.MarvelCard
 import com.puzzlebench.cmk.domain.usecase.BaseServiceUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.cmk.domain.usecase.GetComicsServiceUseCase
+import com.puzzlebench.cmk.domain.usecase.GetCreatorsServiceUseCase
 import kotlinx.android.synthetic.main.activity_main.progressBar
 import kotlinx.android.synthetic.main.activity_main.recycleView
 
@@ -25,6 +27,11 @@ class MainActivityMVVM : AppCompatActivity() {
 
     lateinit var useCase: BaseServiceUseCase
 
+    companion object {
+        var CHARACTER = 0
+        var COMICS = 0
+        var CREATORS = 0
+    }
 
     private lateinit var viewModel: CharactersViewModel
     private val count = 1
@@ -32,11 +39,11 @@ class MainActivityMVVM : AppCompatActivity() {
     var adapter = CharacterAdapter { character -> this.showToast(character.description) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val algo = 0
-        if (algo == 0) {
-            useCase = GetCharacterServiceUseCase(CharacterServicesImpl())
-        } else {
-            useCase = GetComicsServiceUseCase(ComicSerivicesImpl())
+        val stagety = CHARACTER
+        when (stagety) {
+            CHARACTER -> useCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+            COMICS -> useCase = GetComicsServiceUseCase(ComicSerivicesImpl())
+            CREATORS -> useCase = GetCreatorsServiceUseCase(CreatorsServiceImpl())
         }
 
         super.onCreate(savedInstanceState)

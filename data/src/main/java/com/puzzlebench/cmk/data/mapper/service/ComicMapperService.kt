@@ -6,6 +6,7 @@ import com.puzzlebench.cmk.domain.model.MarvelCard
 import com.puzzlebench.cmk.domain.model.Thumbnail
 
 class ComicMapperService : BaseMapperService<ComicsResponse, MarvelCard> {
+
     override fun transform(response: ComicsResponse): MarvelCard = MarvelCard(
             response.title,
             response.variantDescription,
@@ -16,14 +17,4 @@ class ComicMapperService : BaseMapperService<ComicsResponse, MarvelCard> {
             type.description,
             transformToThumbnailResponse(type.thumbnail))
 
-
-    fun transformToThumbnail(thumbnailResponse: ThumbnailResponse): Thumbnail = Thumbnail(
-            thumbnailResponse.path,
-            thumbnailResponse.extension
-    )
-
-    fun transformToThumbnailResponse(thumbnail: Thumbnail): ThumbnailResponse = ThumbnailResponse(
-            thumbnail.path,
-            thumbnail.extension
-    )
 }
