@@ -1,8 +1,8 @@
 package com.puzzlebench.cmk.data.service.api
 
 import com.puzzlebench.cmk.data.service.response.CharacterResponse
-import com.puzzlebench.cmk.data.service.response.ComicsResponse
-import com.puzzlebench.cmk.data.service.response.CreatorsResponse
+import com.puzzlebench.cmk.data.service.response.ComicResponse
+import com.puzzlebench.cmk.data.service.response.CreatorResponse
 import com.puzzlebench.cmk.data.service.response.DataBaseResponse
 import com.puzzlebench.cmk.data.service.response.MarvelBaseResponse
 import io.reactivex.Single
@@ -13,8 +13,8 @@ interface MarvelApi {
     fun getCharacter(): Single<MarvelBaseResponse<DataBaseResponse<CharacterResponse>>>
 
     @GET("/v1/public/comics")
-    fun getComics(): Single<MarvelBaseResponse<DataBaseResponse<ComicsResponse>>>
+    fun getComics(): Single<MarvelBaseResponse<DataBaseResponse<ComicResponse>>>
 
     @GET("/v1/public/creators")
-    fun getCreators(): Single<MarvelBaseResponse<DataBaseResponse<CreatorsResponse>>>
+    fun getCreators(): Single<MarvelBaseResponse<DataBaseResponse<CreatorResponse>>>
 }
