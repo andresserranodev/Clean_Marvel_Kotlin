@@ -1,10 +1,10 @@
 package com.puzzlebench.cmk.domain.usecase
 
-import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.model.MarvelCard
 import com.puzzlebench.cmk.domain.service.CharacterServices
 import io.reactivex.Single
 
-open class GetCharacterServiceUseCase constructor(private val characterServiceImp: CharacterServices) {
+class GetCharacterServiceUseCase constructor(private val characterServiceImp: CharacterServices):BaseServiceUseCase {
 
-    open operator fun invoke(): Single<List<Character>> = characterServiceImp.getCharacters()
+    override fun invoke(): Single<List<MarvelCard>> = characterServiceImp.getCharacters()
 }

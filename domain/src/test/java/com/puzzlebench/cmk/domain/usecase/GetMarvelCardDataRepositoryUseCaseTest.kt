@@ -5,7 +5,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
 
-class GetCharacterDataRepositoryUseCaseTest {
+class GetMarvelCardDataRepositoryUseCaseTest {
 
     private lateinit var useCase: GetCharacterRepositoryUseCase
 

@@ -8,9 +8,9 @@ package com.puzzlebench.cmk.data.mapper.service
  * @param <T> the remote model input type
  * @param <V> the model return type
  */
-interface BaseMapperService<E, D> {
+interface BaseMapperService<R, D> {
 
-    fun transform(type: E): D
+    fun transform(type: R): D
 
-    fun transformToResponse(type: D): E
+    fun transformToResponse(type: D): R
 }

@@ -13,26 +13,37 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.CharactersView
 import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.CharactersViewModelFactory
 import com.puzzlebench.clean_marvel_kotlin.presentation.viewmodel.ScreenState
 import com.puzzlebench.cmk.data.service.CharacterServicesImpl
-import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.data.service.ComicSerivicesImpl
+import com.puzzlebench.cmk.domain.model.MarvelCard
+import com.puzzlebench.cmk.domain.usecase.BaseServiceUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
+import com.puzzlebench.cmk.domain.usecase.GetComicsServiceUseCase
 import kotlinx.android.synthetic.main.activity_main.progressBar
 import kotlinx.android.synthetic.main.activity_main.recycleView
 
 class MainActivityMVVM : AppCompatActivity() {
 
-    private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+    lateinit var useCase: BaseServiceUseCase
+
 
     private lateinit var viewModel: CharactersViewModel
     private val count = 1
 
-    var adapter = CharacterAdapter { character -> this.showToast(character.name) }
+    var adapter = CharacterAdapter { character -> this.showToast(character.description) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val algo = 0
+        if (algo == 0) {
+            useCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+        } else {
+            useCase = GetComicsServiceUseCase(ComicSerivicesImpl())
+        }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProviders.of(
                 this,
-                CharactersViewModelFactory(getCharacterServiceUseCase)
+                CharactersViewModelFactory(useCase)
         )[CharactersViewModel::class.java]
         viewModel.mainState.observe(::getLifecycle, ::updateUI)
         recycleView.layoutManager = GridLayoutManager(this, count)
@@ -56,8 +67,8 @@ class MainActivityMVVM : AppCompatActivity() {
         }
     }
 
-    private fun showCharacters(characters: List<Character>) {
-        adapter.data = characters
+    private fun showCharacters(marvelCards: List<MarvelCard>) {
+        adapter.data = marvelCards
     }
 
     private fun showProgress() {

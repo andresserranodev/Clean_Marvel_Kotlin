@@ -3,13 +3,13 @@ package com.puzzlebench.cmk.data.mapper.service
 import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
 import com.puzzlebench.cmk.data.service.response.CharacterResponse
 import com.puzzlebench.cmk.data.service.response.ThumbnailResponse
-import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.model.MarvelCard
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
 
-class CharacterMapperServiceTest {
+class MarvelCardMapperServiceTest {
     private lateinit var mapper: CharacterMapperService
 
 
@@ -36,11 +36,11 @@ class CharacterMapperServiceTest {
 
     }
 
-    private fun assertBufferooDataEquality(characterResponse: CharacterResponse, character: Character) {
-        Assert.assertEquals(characterResponse.name, character.name)
-        Assert.assertEquals(characterResponse.description, character.description)
-        Assert.assertEquals(characterResponse.thumbnail.path, character.thumbnail.path)
-        Assert.assertEquals(characterResponse.thumbnail.extension, character.thumbnail.extension)
+    private fun assertBufferooDataEquality(characterResponse: CharacterResponse, marvelCard: MarvelCard) {
+        Assert.assertEquals(characterResponse.name, marvelCard.header)
+        Assert.assertEquals(characterResponse.description, marvelCard.description)
+        Assert.assertEquals(characterResponse.thumbnail.path, marvelCard.thumbnail.path)
+        Assert.assertEquals(characterResponse.thumbnail.extension, marvelCard.thumbnail.extension)
 
 
     }

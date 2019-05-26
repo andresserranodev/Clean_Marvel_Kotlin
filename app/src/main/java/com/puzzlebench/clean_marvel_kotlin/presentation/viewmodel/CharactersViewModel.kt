@@ -4,13 +4,13 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.puzzlebench.cmk.domain.model.Character
-import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
+import com.puzzlebench.cmk.domain.model.MarvelCard
+import com.puzzlebench.cmk.domain.usecase.BaseServiceUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CharactersViewModel(private val useCase: GetCharacterServiceUseCase) : ViewModel() {
+class CharactersViewModel(private val useCase: BaseServiceUseCase) : ViewModel() {
 
 
     private lateinit var _charactersViewState: MutableLiveData<ScreenState<CharactersViewState>>
@@ -35,7 +35,7 @@ class CharactersViewModel(private val useCase: GetCharacterServiceUseCase) : Vie
             return _charactersViewState
         }
 
-    private fun onItemsLoaded(items: List<Character>) {
+    private fun onItemsLoaded(items: List<MarvelCard>) {
         _charactersViewState.value = ScreenState.Render(CharactersViewState.ShowItems(items))
     }
 
@@ -50,7 +50,7 @@ class CharactersViewModel(private val useCase: GetCharacterServiceUseCase) : Vie
 }
 
 @Suppress("UNCHECKED_CAST")
-class CharactersViewModelFactory(private val useCase: GetCharacterServiceUseCase) :
+class CharactersViewModelFactory(private val useCase: BaseServiceUseCase) :
         ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return CharactersViewModel(useCase) as T

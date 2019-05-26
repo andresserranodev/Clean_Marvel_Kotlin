@@ -1,12 +1,11 @@
 package com.puzzlebench.cmk.domain.usecase
 
-import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.model.MarvelCard
 import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import org.junit.*
-import org.junit.Assert.*
 import org.mockito.Mockito
 
-class SaveCharacterRepositoryUseCaseTest {
+class SaveMarvelCardRepositoryUseCaseTest {
 
     private lateinit var useCase: SaveCharacterRepositoryUseCase
 
@@ -22,7 +21,7 @@ class SaveCharacterRepositoryUseCaseTest {
     @Test
     fun invokeSave() {
         val characterList = listOf(1..5).map {
-            Mockito.mock(Character::class.java)
+            Mockito.mock(MarvelCard::class.java)
         }
         useCase.invoke(characterList)
         Mockito.verify(characterDataRepository).save(characterList)

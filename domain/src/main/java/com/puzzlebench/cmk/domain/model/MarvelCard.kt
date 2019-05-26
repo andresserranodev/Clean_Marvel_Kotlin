@@ -1,7 +1,7 @@
 package com.puzzlebench.cmk.domain.model
 
-open class Character(
-        val name: String,
+class MarvelCard(
+        val header: String,
         val description: String,
         val thumbnail: Thumbnail
 )

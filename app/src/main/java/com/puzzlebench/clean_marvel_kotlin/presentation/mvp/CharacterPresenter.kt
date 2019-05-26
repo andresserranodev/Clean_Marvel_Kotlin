@@ -1,7 +1,7 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.Presenter
-import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.model.MarvelCard
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
@@ -15,15 +15,15 @@ class CharacterPresenter constructor(view: CharacterView,
                                      private val saveCharacterRepositoryUseCase: SaveCharacterRepositoryUseCase,
                                      private val subscriptions: CompositeDisposable) : Presenter<CharacterView>(view) {
 
-    lateinit var characters: List<Character>
+    lateinit var marvelCards: List<MarvelCard>
     fun init() {
         view.init()
-        characters = getCharacterRepositoryUseCase.invoke()
-        if (characters.isEmpty()) {
+        marvelCards = getCharacterRepositoryUseCase.invoke()
+        if (marvelCards.isEmpty()) {
             requestGetCharacters()
         } else {
             view.hideLoading()
-            view.showCharacters(characters)
+            view.showCharacters(marvelCards)
         }
     }
 

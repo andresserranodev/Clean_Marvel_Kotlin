@@ -1,6 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
-import com.puzzlebench.cmk.domain.model.Character
+import com.puzzlebench.cmk.domain.model.MarvelCard
 import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import com.puzzlebench.cmk.domain.service.CharacterServices
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
@@ -19,7 +19,7 @@ import org.mockito.Mockito.verify
 
 //TODO fix on second iteration
 // error: However, there was exactly 1 interaction with this mock:
-class CharacterPresenterTest {
+class MarvelCardPresenterTest {
 
     private var view = mock(CharacterView::class.java)
     private var characterServiceImp = mock(CharacterServices::class.java)
@@ -52,7 +52,7 @@ class CharacterPresenterTest {
     @Test
     fun init() {
         val itemsCharacters = listOf(1..5).map {
-            mock(Character::class.java)
+            mock(MarvelCard::class.java)
         }
         val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
@@ -81,7 +81,7 @@ class CharacterPresenterTest {
     @Ignore
     fun reposeWithItemToShow() {
         val itemsCharacters = listOf(1..5).map {
-            mock(Character::class.java)
+            mock(MarvelCard::class.java)
         }
         val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
@@ -96,7 +96,7 @@ class CharacterPresenterTest {
 
     @Ignore
     fun reposeWithoutItemToShow() {
-        val itemsCharacters = emptyList<Character>()
+        val itemsCharacters = emptyList<MarvelCard>()
         val observable = Single.just(itemsCharacters)
         Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
         characterPresenter.init()
