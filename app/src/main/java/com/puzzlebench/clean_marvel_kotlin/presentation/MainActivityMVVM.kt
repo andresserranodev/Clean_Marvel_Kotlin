@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
@@ -25,12 +26,11 @@ import kotlinx.android.synthetic.main.activity_main.recycleView
 
 class MainActivityMVVM : AppCompatActivity() {
 
-    lateinit var useCase: BaseServiceUseCase
 
     companion object {
         var CHARACTER = 0
-        var COMICS = 0
-        var CREATORS = 0
+        var COMICS = 1
+        var CREATORS = 2
     }
 
     private lateinit var viewModel: CharactersViewModel
@@ -39,21 +39,16 @@ class MainActivityMVVM : AppCompatActivity() {
     var adapter = CharacterAdapter { character -> this.showToast(character.description) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val stagety = CHARACTER
-        when (stagety) {
-            CHARACTER -> useCase = GetCharacterServiceUseCase(CharacterServicesImpl())
-            COMICS -> useCase = GetComicsServiceUseCase(ComicSerivicesImpl())
-            CREATORS -> useCase = GetCreatorsServiceUseCase(CreatorsServiceImpl())
-        }
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProviders.of(
                 this,
-                CharactersViewModelFactory(useCase)
+                CharactersViewModelFactory(getUseCase(CREATORS))
         )[CharactersViewModel::class.java]
         viewModel.mainState.observe(::getLifecycle, ::updateUI)
-        recycleView.layoutManager = GridLayoutManager(this, count)
+        recycleView.layoutManager = GridLayoutManager(this, count) as RecyclerView.LayoutManager?
         recycleView.adapter = adapter
 
     }
@@ -86,6 +81,18 @@ class MainActivityMVVM : AppCompatActivity() {
     private fun hideProgress() {
         progressBar.visibility = View.GONE
         recycleView.visibility = View.VISIBLE
+    }
+
+    private fun getUseCase(case: Int): BaseServiceUseCase {
+        lateinit var useCase: BaseServiceUseCase
+
+        when (case) {
+            CHARACTER -> useCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+            COMICS -> useCase = GetComicsServiceUseCase(ComicSerivicesImpl())
+            CREATORS -> useCase = GetCreatorsServiceUseCase(CreatorsServiceImpl())
+        }
+
+        return useCase
     }
 
 
