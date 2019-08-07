@@ -9,15 +9,18 @@ import javax.inject.Inject
 class FetchCharacterUseCase @Inject constructor(private val characterServiceImp: CharacterServices,
                                                 private val characterDataRepository: CharacterRepository) {
 
-    //TODO save data in cache
     operator fun invoke(): Single<List<Character>> {
         val characterRepositoryData = characterDataRepository.getAll()
         return if (characterRepositoryData.isEmpty()) {
-            characterServiceImp.getCharacters()
+            characterServiceImp
+                    .getCharacters()
+                    .flatMap { characters ->
+                        characterDataRepository
+                                .save(characters)
+                                .andThen(Single.just(characters))
+                    }
         } else {
-            Single.create { e ->
-                e.onSuccess(characterRepositoryData)
-            }
+            Single.just(characterRepositoryData)
         }
 
     }
