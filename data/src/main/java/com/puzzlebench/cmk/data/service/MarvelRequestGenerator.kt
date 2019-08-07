@@ -8,12 +8,12 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class MarvelResquestGenerator {
+class MarvelRequestGenerator {
     companion object {
-        private val PRIVATE_API_KEY_ARG = "hash"
-        private val PUBLIC_API_KEY_ARG = "apikey"
-        private val TS = "ts"
-        private val TS_VALUE = "1"
+        private const val PRIVATE_API_KEY_ARG = "hash"
+        private const val PUBLIC_API_KEY_ARG = "apikey"
+        private const val TS = "ts"
+        private const val TS_VALUE = "1"
         private val httpClient = OkHttpClient.Builder().addInterceptor { chain ->
             val defaultRequest = chain.request()
 

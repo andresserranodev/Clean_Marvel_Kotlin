@@ -16,17 +16,3 @@ class CharacterModel @Inject constructor(private val fetchCharacterUseCase: Fetc
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }
-
-class CharactersFactory {
-
-    companion object Factory {
-        const val BASE_NAME = "Name"
-        const val BASE_DESCRIPTION = "Description"
-        const val BASE_PATH = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784"
-        const val BASE_EXTENSION = ".png"
-
-        fun getMockListCharacter(): List<Character> = (1..5).map {
-            Character("${BASE_NAME}$it", "${BASE_DESCRIPTION}$it", Thumbnail(BASE_PATH, BASE_EXTENSION))
-        }
-    }
-}

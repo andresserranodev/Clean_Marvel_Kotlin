@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.presentation.di
+package com.puzzlebench.clean_marvel_kotlin.presentation.di.android
 
 import com.puzzlebench.clean_marvel_kotlin.presentation.MarvelApp
 import dagger.Component
