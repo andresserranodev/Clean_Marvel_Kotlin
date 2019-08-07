@@ -13,6 +13,7 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterContract
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenterV2
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView
+import com.puzzlebench.cmk.data.service.MarvelResquestGenerator
 import com.puzzlebench.cmk.domain.usecase.FetchCharacterUseCase
 import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
 import dagger.android.AndroidInjection
@@ -20,7 +21,7 @@ import javax.inject.Inject
 
 class MainActivity : BaseRxActivity() {
 
-    private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+    private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl(MarvelResquestGenerator.makeMarvelService()))
     private val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
     private val saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
 
@@ -29,9 +30,6 @@ class MainActivity : BaseRxActivity() {
             getCharacterRepositoryUseCase,
             saveCharacterRepositoryUseCase,
             subscriptions)
-
-
-    private val fetchCharacterUseCase = FetchCharacterUseCase(getCharacterRepositoryUseCase)
 
 
     @Inject

@@ -28,7 +28,11 @@ class CharacterPresenter constructor(view: CharacterView,
     }
 
     private fun requestGetCharacters() {
-        val subscription = getCharacterServiceUseCase.invoke().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ characters ->
+        val subscription = getCharacterServiceUseCase
+                .invoke()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ characters ->
             if (characters.isEmpty()) {
                 view.showToastNoItemToShow()
             } else {

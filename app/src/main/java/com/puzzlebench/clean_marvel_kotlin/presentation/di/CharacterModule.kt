@@ -4,10 +4,11 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterContract
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterModel
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenterV2
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView2
+import com.puzzlebench.cmk.data.di.ServiceModule
 import dagger.Binds
 import dagger.Module
 
-@Module
+@Module(includes = [ServiceModule::class])
 abstract class CharacterModule {
     @Binds
     abstract fun provideCharacterModel(characterModel: CharacterModel): CharacterContract.Model
