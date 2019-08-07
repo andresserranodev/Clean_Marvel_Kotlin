@@ -8,6 +8,8 @@ ext {
     appSupportVersion = '26.1.0'
     rxAndroidVersion = '2.0.1'
     rxJavaVersion = '2.1.7'
+    daggerAndroidVersion = '2.21'
+
 
     //app dependencies version
     picassoVersion = '2.5.2'
@@ -26,10 +28,12 @@ ext {
 
 
     generalDependencies = [
-            rxAndroid : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-            rxJava    : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            appSupport: "com.android.support:appcompat-v7:${appSupportVersion}",
-            kotlin    : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+            rxAndroid            : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJava               : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            appSupport           : "com.android.support:appcompat-v7:${appSupportVersion}",
+            kotlin               : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}",
+            daggerAndroid        : "com.google.dagger:dagger-android:$daggerAndroidVersion",
+            daggerAndroidSupport : "com.google.dagger:dagger-android-support:$daggerAndroidVersion"
     ]
 
     generalTestDependencies = [
@@ -51,5 +55,9 @@ ext {
             retrofitAdapterRX: "com.squareup.retrofit2:adapter-rxjava2:${retrofitAdapterRXVersion}"
     ]
 
+    kaptDependencies = [
+            daggerCompiler         : "com.google.dagger:dagger-compiler:$daggerAndroidVersion",
+            daggerAndroidProcessor : "com.google.dagger:dagger-android-processor:$daggerAndroidVersion"
+    ]
 
 }
