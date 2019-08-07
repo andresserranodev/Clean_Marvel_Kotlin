@@ -2,9 +2,10 @@ package com.puzzlebench.cmk.data.repository.source
 
 import com.puzzlebench.cmk.data.model.CharacterRealm
 import io.realm.Realm
+import javax.inject.Inject
 
 
-class CharacterDataSourceImpl : DataSource<CharacterRealm>(CharacterRealm::class.java), CharacterDataSource {
+class CharacterDataSourceImpl @Inject constructor() : DataSource<CharacterRealm>(CharacterRealm::class.java), CharacterDataSource {
 
     override fun saveCharacters(c: List<CharacterRealm>) {
         this.save(c)

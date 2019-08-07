@@ -4,10 +4,12 @@ import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
 import com.puzzlebench.cmk.data.repository.source.CharacterDataSource
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.repository.CharacterRepository
+import javax.inject.Inject
 
 
-class CharacterDataRepository constructor(private val dataSource: CharacterDataSource,
-                                          private val mapper: CharacterMapperRepository) : CharacterRepository {
+class CharacterRepositoryImpl @Inject constructor(private val dataSource: CharacterDataSource,
+                                                  private val mapper: CharacterMapperRepository)
+    : CharacterRepository {
 
     override fun save(c: List<Character>) {
         dataSource.saveCharacters(c.map { mapper.transform(it) })

@@ -15,7 +15,6 @@ class CharacterPresenterV2 @Inject constructor(private val view: CharacterContra
     }
 
     override fun fetchData() {
-
         subscription = model
                 .fetchData()
                 .subscribe({ characters ->
