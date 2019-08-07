@@ -34,11 +34,18 @@ dependencies {
     def generalDependencies = rootProject.ext.generalDependencies
     def generalTestDependencies = rootProject.ext.generalTestDependencies
     def appDependencies = rootProject.ext.appDependencies
+    def kaptLibs = rootProject.ext.kaptDependencies
+
 
     implementation generalDependencies.rxAndroid,
             generalDependencies.rxJava,
             generalDependencies.appSupport,
-            generalDependencies.kotlin
+            generalDependencies.kotlin,
+            generalDependencies.daggerAndroid,
+            generalDependencies.daggerAndroidSupport
+
+    kapt kaptLibs.daggerCompiler,
+            kaptLibs.daggerAndroidProcessor
 
 
     implementation appDependencies.picasso,

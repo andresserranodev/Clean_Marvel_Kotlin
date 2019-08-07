@@ -3,6 +3,7 @@ package com.puzzlebench.clean_marvel_kotlin.presentation.base
 import android.support.v7.app.AppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 
+@Deprecated("instead create your onw CompositeDisposable")
 open class BaseRxActivity : AppCompatActivity() {
 
     protected var subscriptions = CompositeDisposable()

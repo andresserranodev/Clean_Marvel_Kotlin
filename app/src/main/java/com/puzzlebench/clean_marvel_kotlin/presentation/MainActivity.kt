@@ -9,9 +9,14 @@ import com.puzzlebench.cmk.data.service.CharacterServicesImpl
 import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
 import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxActivity
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterContract
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenterV2
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView
+import com.puzzlebench.cmk.domain.usecase.FetchCharacterUseCase
 import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 class MainActivity : BaseRxActivity() {
 
@@ -25,9 +30,19 @@ class MainActivity : BaseRxActivity() {
             saveCharacterRepositoryUseCase,
             subscriptions)
 
+
+    private val fetchCharacterUseCase = FetchCharacterUseCase(getCharacterRepositoryUseCase)
+
+
+    @Inject
+    lateinit var presenterV2: CharacterContract.Presenter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter.init()
+        //presenter.init()
+        presenterV2.initPresenter()
     }
 }
