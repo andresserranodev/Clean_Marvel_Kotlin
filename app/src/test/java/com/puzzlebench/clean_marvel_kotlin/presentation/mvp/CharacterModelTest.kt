@@ -19,7 +19,6 @@ class CharacterModelTest {
 
     @Before
     fun setUp() {
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         val characters = CharactersFactory.getMockListCharacter()
         whenever(fetchCharacterUseCase.invoke()).doReturn(Single.just(characters))
         characterModel = CharacterModel(fetchCharacterUseCase)
