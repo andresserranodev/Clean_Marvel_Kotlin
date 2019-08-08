@@ -50,7 +50,7 @@ Martin, Robert C.. Clean Architecture: A Craftsman's Guide to Software Structure
 
 
 ## How it looks
-![alt text](https://github.com/adsf117/MVP_MARVEL_RX/blob/master/demo_small.gif)
+![alt text](https://github.com/adsf117/Clean_Marvel_Kotlin/blob/master/how_it_looks.gif)
 
 
 ## How to use this project
