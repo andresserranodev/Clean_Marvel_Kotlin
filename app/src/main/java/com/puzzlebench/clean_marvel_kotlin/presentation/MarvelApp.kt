@@ -1,15 +1,14 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation
 
 import android.app.Activity
-import android.app.Application
 import com.puzzlebench.clean_marvel_kotlin.presentation.di.android.DaggerAppComponent
+import com.puzzlebench.cmk.data.DataApp
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
-import io.realm.Realm
 import javax.inject.Inject
 
-class MarvelApp : Application(), HasActivityInjector {
+class MarvelApp : DataApp(), HasActivityInjector {
 
     @Inject
     lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
@@ -20,7 +19,9 @@ class MarvelApp : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder().create(this).inject(this)
-        Realm.init(this)
+        DaggerAppComponent
+                .builder()
+                .create(this)
+                .inject(this)
     }
 }
