@@ -84,8 +84,8 @@ The `Kotlin` plugin for Android Studio is also required.
 
 [Karumi/KataScreenshotKotlin](https://github.com/Karumi/KataScreenshotKotlin)
 
-[Android Clean Architecture ] (https://caster.io/courses/android-clean-architecture)
+[Android Clean Architecture ](https://caster.io/courses/android-clean-architecture)
 
-[Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series) 1st Edition] (https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164)
+[Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series) 1st Edition](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164)
 
 
