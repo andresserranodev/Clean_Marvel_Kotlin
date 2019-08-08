@@ -15,8 +15,8 @@ abstract class CharacterModule {
     abstract fun provideCharacterModel(characterModel: CharacterModel): CharacterContract.Model
 
     @Binds
-    abstract fun provideCharacterView2(characterView2: CharacterView): CharacterContract.View
+    abstract fun provideCharacterView(characterView2: CharacterView): CharacterContract.View
 
     @Binds
-    abstract fun provideCharacterPresenterV2(characterPresenter: CharacterPresenter): CharacterContract.Presenter
+    abstract fun provideCharacterPresenter(characterPresenter: CharacterPresenter): CharacterContract.Presenter
 }

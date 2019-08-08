@@ -8,6 +8,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
 import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import com.puzzlebench.cmk.domain.service.CharacterServices
+import io.reactivex.Completable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -34,10 +35,13 @@ class FetchCharacterUseCaseTest {
     fun `return data from server`() {
         val serviceResponse = CharactersFactory.getMockListCharacter()
         whenever(characterServices.getCharacters()).doReturn(Single.just(serviceResponse))
+        whenever(characterRepository.save(serviceResponse)).doReturn(Completable.complete())
         useCase.invoke()
+                .test()
+                .assertValue(serviceResponse)
         verify(characterRepository).getAll()
         verify(characterServices).getCharacters()
-        //TODO check how to verify if the single execute in  flatMap the verify(characterRepository).save(serviceResponse)
+        verify(characterRepository).save(serviceResponse)
     }
 
 }

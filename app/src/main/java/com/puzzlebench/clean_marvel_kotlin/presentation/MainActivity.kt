@@ -9,6 +9,7 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+
     @Inject
     lateinit var presenter: CharacterContract.Presenter
 
