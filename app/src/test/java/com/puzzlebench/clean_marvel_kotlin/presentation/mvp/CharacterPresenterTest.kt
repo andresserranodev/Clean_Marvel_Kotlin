@@ -21,7 +21,6 @@ class CharacterPresenterTest {
 
     @Before
     fun setUp() {
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         presenter = CharacterPresenter(characterView, characterModel)
         val characters = CharactersFactory.getMockListCharacter()
         whenever(characterModel.fetchData()).doReturn(Single.just(characters))
