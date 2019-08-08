@@ -1,110 +1,73 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
 
+import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
+import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
 import com.puzzlebench.cmk.domain.model.Character
-import com.puzzlebench.cmk.domain.repository.CharacterRepository
-import com.puzzlebench.cmk.domain.service.CharacterServices
-import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
-import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
-import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import org.junit.Before
-import org.junit.Ignore
-import org.junit.Test
-import org.mockito.Mockito
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
+import org.junit.*
+import org.junit.Assert.*
 
-//TODO fix on second iteration
-// error: However, there was exactly 1 interaction with this mock:
 class CharacterPresenterTest {
 
-    private var view = mock(CharacterView::class.java)
-    private var characterServiceImp = mock(CharacterServices::class.java)
-    private var characterRepository = mock(CharacterRepository::class.java)
-
-    private lateinit var characterPresenter: CharacterPresenter
-    private lateinit var getCharacterServiceUseCase: GetCharacterServiceUseCase
-    private lateinit var getCharacterRepositoryUseCase: GetCharacterRepositoryUseCase
-    private lateinit var saveCharacterRepositoryUseCase: SaveCharacterRepositoryUseCase
-
+    private lateinit var presenter: CharacterPresenter
+    private var characterView = mock<CharacterView>()
+    private var characterModel = mock<CharacterModel>()
 
     @Before
     fun setUp() {
-
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
-        getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
-        getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(characterRepository)
-        saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(characterRepository)
-        val subscriptions = mock(CompositeDisposable::class.java)
-        characterPresenter = CharacterPresenter(view,
-                getCharacterServiceUseCase,
-                getCharacterRepositoryUseCase,
-                saveCharacterRepositoryUseCase,
-                subscriptions)
-
-
+        presenter = CharacterPresenter(characterView, characterModel)
+        val characters = CharactersFactory.getMockListCharacter()
+        whenever(characterModel.fetchData()).doReturn(Single.just(characters))
     }
-
 
     @Test
-    fun init() {
-        val itemsCharacters = listOf(1..5).map {
-            mock(Character::class.java)
-        }
-        val observable = Single.just(itemsCharacters)
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
-        Mockito.`when`(getCharacterRepositoryUseCase.invoke()).thenReturn(emptyList())
-        characterPresenter.init()
-        verify(view).init()
-        verify(characterServiceImp).getCharacters()
-        verify(characterRepository).getAll()
-        verify(view).hideLoading()
-        verify(view).showCharacters(itemsCharacters)
+    fun initPresenter() {
+        presenter.initPresenter()
+        verify(characterView).initView()
+    }
 
+    @Test
+    fun `show items`() {
+        val characters = CharactersFactory.getMockListCharacter()
+        whenever(characterModel.fetchData()).doReturn(Single.just(characters))
+        presenter.fetchData()
+        verify(characterModel).fetchData()
+        verify(characterView).showCharacters(characters)
+        verify(characterView).hideLoading()
 
     }
 
-    @Ignore
-    fun reposeWithError() {
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Single.error(Exception("")))
-        characterPresenter.init()
-        verify(view).init()
-        verify(characterServiceImp).getCharacters()
-        verify(view).hideLoading()
-        verify(view).showToastNetworkError("")
+    @Test
+    fun `no items to show`() {
+        val noCharacter = listOf<Character>()
+        whenever(characterModel.fetchData()).doReturn(Single.just(noCharacter))
+        presenter.fetchData()
+        verify(characterModel).fetchData()
+        verify(characterView).showMessageNoItemToShow()
+        verify(characterView).hideLoading()
 
     }
 
-    @Ignore
-    fun reposeWithItemToShow() {
-        val itemsCharacters = listOf(1..5).map {
-            mock(Character::class.java)
-        }
-        val observable = Single.just(itemsCharacters)
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
-        characterPresenter.init()
-        verify(view).init()
-        verify(characterServiceImp).getCharacters()
-        verify(view).hideLoading()
-        verify(view).showCharacters(itemsCharacters)
-
+    @Test
+    fun `error getting data`() {
+        val errorMessage = "mock Error Messages"
+        whenever(characterModel.fetchData()).doReturn(Single.error(Exception(errorMessage)))
+        presenter.fetchData()
+        verify(characterModel).fetchData()
+        verify(characterView).showNetworkError(errorMessage)
+        verify(characterView).hideLoading()
 
     }
 
-    @Ignore
-    fun reposeWithoutItemToShow() {
-        val itemsCharacters = emptyList<Character>()
-        val observable = Single.just(itemsCharacters)
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
-        characterPresenter.init()
-        verify(view).init()
-        verify(characterServiceImp).getCharacters()
-
+    @Test
+    fun onPause() {
+        presenter.onPause()
 
     }
-
-
 }

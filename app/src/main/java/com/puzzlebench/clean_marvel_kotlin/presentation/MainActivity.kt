@@ -1,33 +1,27 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.puzzlebench.clean_marvel_kotlin.R
-import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
-import com.puzzlebench.cmk.data.repository.CharacterDataRepository
-import com.puzzlebench.cmk.data.repository.source.CharacterDataSourceImpl
-import com.puzzlebench.cmk.data.service.CharacterServicesImpl
-import com.puzzlebench.cmk.domain.usecase.GetCharacterRepositoryUseCase
-import com.puzzlebench.cmk.domain.usecase.GetCharacterServiceUseCase
-import com.puzzlebench.clean_marvel_kotlin.presentation.base.BaseRxActivity
-import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
-import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView
-import com.puzzlebench.cmk.domain.usecase.SaveCharacterRepositoryUseCase
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterContract
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
-class MainActivity : BaseRxActivity() {
+class MainActivity : AppCompatActivity() {
 
-    private val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
-    private val getCharacterRepositoryUseCase = GetCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
-    private val saveCharacterRepositoryUseCase = SaveCharacterRepositoryUseCase(CharacterDataRepository(CharacterDataSourceImpl(), CharacterMapperRepository()))
 
-    private val presenter = CharacterPresenter(CharacterView(this),
-            getCharacterServiceUseCase,
-            getCharacterRepositoryUseCase,
-            saveCharacterRepositoryUseCase,
-            subscriptions)
+    @Inject
+    lateinit var presenter: CharacterContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter.init()
+        presenter.initPresenter()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.onPause()
     }
 }

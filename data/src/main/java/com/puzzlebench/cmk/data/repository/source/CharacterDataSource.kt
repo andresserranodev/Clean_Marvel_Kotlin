@@ -4,5 +4,5 @@ import com.puzzlebench.cmk.data.model.CharacterRealm
 
 interface CharacterDataSource {
     fun getAllCharacters(): List<CharacterRealm>
-    fun saveCharacters(c: List<CharacterRealm>)
+    fun saveCharacters(charactersRealm: List<CharacterRealm>)
 }

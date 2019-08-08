@@ -13,13 +13,7 @@ class CharactersFactory {
         const val BASE_EXTENSION = ".png"
 
         fun getMockListCharacter(): List<Character> = (1..5).map {
-            Character("${BASE_NAME}$it", "${BASE_DESCRIPTION}$it", Thumbnail("${BASE_PATH}$it", BASE_EXTENSION))
+            Character("$BASE_NAME$it", "$BASE_DESCRIPTION$it", Thumbnail("$BASE_PATH$it", BASE_EXTENSION))
         }
-
-        fun getMockCharacter(): Character {
-            return Character(BASE_NAME, BASE_DESCRIPTION, Thumbnail(BASE_PATH, BASE_EXTENSION))
-        }
-
-
     }
 }

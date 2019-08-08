@@ -1,5 +1,6 @@
 package com.puzzlebench.cmk.data.repository.source
 
+import io.reactivex.Single
 import io.realm.Realm
 import io.realm.RealmObject
 
@@ -27,5 +28,15 @@ abstract class DataSource<T : RealmObject>(private val clazz: Class<T>) {
 
     fun getAll(realm: Realm = Realm.getDefaultInstance()): MutableList<T>? {
         return realm.copyFromRealm(realm.where(clazz).findAll())
+    }
+
+    fun Realm.executeAsync(transaction: (Realm) -> Unit): Single<Boolean> {
+        return Single.create<Boolean> { emitter ->
+            executeTransactionAsync(transaction, {
+                emitter.onSuccess(true)
+            }, {
+                emitter.onError(it)
+            })
+        }
     }
 }

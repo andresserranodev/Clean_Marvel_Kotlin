@@ -29,6 +29,25 @@ Follow :
 
 [Realm](https://realm.io/docs/java/latest)
 
+[Dagger 2] (https://dagger.dev/)
+
+
+##  What can i do?
+
+main objective with this repository  is give the ability to change the details easily for example
+1. use Room instead Realm
+2. use Fast-Android-Networking  instead Retrofit
+3. use MVVM or MVI instead MVP
+
+"All software systems can be decomposed into two major elements: policy and details.
+ The policy element embodies all the business rules and procedures.
+ The policy is where the true value of the system lives.
+ The details are those things that are necessary to enable humans, other systems, and programmers to communicate with the policy,
+ but that do not impact the behavior of the policy at all.
+ They include IO devices, databases, web systems, servers, frameworks, communication protocols, and so forth."
+
+Martin, Robert C.. Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series) (p. 140). Pearson Education. Kindle Edition.
+
 
 ## How it looks
 ![alt text](https://github.com/adsf117/MVP_MARVEL_RX/blob/master/demo_small.gif)
@@ -52,9 +71,9 @@ The `Kotlin` plugin for Android Studio is also required.
 2. add commics taps 
 3. add pager scroll
 
-# Code Enhancements:
+# Enhancements:
 
-1. Add Dagger2
+1. migrate to kotlin DSL
 
 
 ## Sources
@@ -64,4 +83,9 @@ The `Kotlin` plugin for Android Studio is also required.
 [Keddit — Part 6: API — Retrofit & Kotlin](https://android.jlelse.eu/keddit-part-6-api-retrofit-kotlin-d309074af0)
 
 [Karumi/KataScreenshotKotlin](https://github.com/Karumi/KataScreenshotKotlin)
+
+[Android Clean Architecture ] (https://caster.io/courses/android-clean-architecture)
+
+[Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series) 1st Edition] (https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164)
+
 
