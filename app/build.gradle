@@ -55,9 +55,8 @@ dependencies {
     testImplementation generalTestDependencies.mockito,
             generalTestDependencies.junit,
             generalTestDependencies.mockitoInline,
-            generalTestDependencies.kotlinTest
-
-
+            generalTestDependencies.kotlinTest,
+            generalTestDependencies.mockitoKotlin
 }
 
 android.testOptions.unitTests.all {
