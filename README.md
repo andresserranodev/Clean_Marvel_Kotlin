@@ -29,7 +29,7 @@ Follow :
 
 [Realm](https://realm.io/docs/java/latest)
 
-[Dagger 2] (https://dagger.dev/)
+[Dagger 2](https://dagger.dev/)
 
 
 ##  What can i do?
