@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 
 def libs = rootProject.ext.generalDependencies
 def kaptLibs = rootProject.ext.kaptDependencies
+def generalTestDependencies = rootProject.ext.generalTestDependencies
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -17,6 +18,12 @@ dependencies {
 
     annotationProcessor kaptLibs.daggerCompiler,
             kaptLibs.daggerAndroidProcessor
+
+    testImplementation generalTestDependencies.mockito,
+            generalTestDependencies.junit,
+            generalTestDependencies.mockitoInline,
+            generalTestDependencies.kotlinTest,
+            generalTestDependencies.mockitoKotlin
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }

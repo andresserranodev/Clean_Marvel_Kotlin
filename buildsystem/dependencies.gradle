@@ -25,15 +25,16 @@ ext {
     mockitoVersion = '2.10.0'
     jUnitVersion = '4.12'
     mockitoInlineVersion = '2.18.3'
+    mockitoKotlin = '2.1.0'
 
 
     generalDependencies = [
-            rxAndroid            : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-            rxJava               : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-            appSupport           : "com.android.support:appcompat-v7:${appSupportVersion}",
-            kotlin               : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}",
-            daggerAndroid        : "com.google.dagger:dagger-android:$daggerAndroidVersion",
-            daggerAndroidSupport : "com.google.dagger:dagger-android-support:$daggerAndroidVersion"
+            rxAndroid           : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJava              : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            appSupport          : "com.android.support:appcompat-v7:${appSupportVersion}",
+            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}",
+            daggerAndroid       : "com.google.dagger:dagger-android:$daggerAndroidVersion",
+            daggerAndroidSupport: "com.google.dagger:dagger-android-support:$daggerAndroidVersion"
     ]
 
     generalTestDependencies = [
@@ -41,6 +42,7 @@ ext {
             junit        : "junit:junit:${jUnitVersion}",
             kotlinTest   : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
             mockitoInline: "org.mockito:mockito-inline:${mockitoInlineVersion}",
+            mockitoKotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlin}"
     ]
 
     appDependencies = [
@@ -56,8 +58,8 @@ ext {
     ]
 
     kaptDependencies = [
-            daggerCompiler         : "com.google.dagger:dagger-compiler:$daggerAndroidVersion",
-            daggerAndroidProcessor : "com.google.dagger:dagger-android-processor:$daggerAndroidVersion"
+            daggerCompiler        : "com.google.dagger:dagger-compiler:$daggerAndroidVersion",
+            daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:$daggerAndroidVersion"
     ]
 
 }
