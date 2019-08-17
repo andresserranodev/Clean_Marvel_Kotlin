@@ -25,8 +25,3 @@ comment:
   behavior: default
   require_changes: no
 
-ignore:
-  - "**/di/**"       # ignore dagger
-  - "**/adapter/**"
-  - "**/extension/**"
-  - "**/*MarvelApp.class"
