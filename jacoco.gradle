@@ -26,6 +26,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
             'android/**/*.*',
             '**/*Activity.*',
             '**/di/**',
+            '**/io/**',
             '**/adapter/**',
             '**/extension/**',
             '**/*WeakRef.class',

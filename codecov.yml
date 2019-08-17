@@ -25,3 +25,10 @@ comment:
   behavior: default
   require_changes: no
 
+  Andres Serrano Vivas 10:28 PM
+ignore:
+  - "**/di/**"       # ignore dagger
+  - "**/io.realm/**" # ignore realm
+  - "**/adapter/**"
+  - "**/extension/**"
+  - "**/*MarvelApp.class"
