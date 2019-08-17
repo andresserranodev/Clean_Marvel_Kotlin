@@ -41,3 +41,5 @@ before_install:
 script:
   - echo "Building app"
   - ./gradlew clean assembleDebug testDebugUnitTest
+  - ./gradlew build jacocoTestReport assembleAndroidTest
+
