@@ -1,6 +1,5 @@
 
 [![Build Status](https://travis-ci.org/adsf117/Clean_Marvel_Kotlin.svg?branch=master)](https://travis-ci.org/adsf117/Clean_Marvel_Kotlin)
-
 [![codecov.io](https://codecov.io/gh/adsf117/Clean_Marvel_Kotlin/branch/andres.serrano/TestCoverageReport/graph/badge.svg)](https://codecov.io/gh/adsf117/Clean_Marvel_Kotlin/)
 
 # Clean Marvel Kotlin
