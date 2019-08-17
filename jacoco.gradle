@@ -1,0 +1,58 @@
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.7.9"
+    reportsDir = file("$buildDir/reports")
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports for Debug build"
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    // what to exclude from coverage report
+    // UI, "noise", generated classes, platform classes, etc.
+    def excludes = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$ViewInjector*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*Test*.*',
+            'android/**/*.*',
+            '**/*Activity.*',
+            '**/di/**',
+            '**/adapter/**',
+            '**/extension/**',
+            '**/*WeakRef.class',
+            '**/*WeakReferenceKt.class',
+            '**/*MarvelApp.class',
+            '**/*_ProvideFactory.class',
+            '**/*_Factory.class',
+            '**/*_MembersInjector.class',
+            '**/Dagger*Component*.class',
+            '**/Dagger*Subcomponent*.class',
+            '**/*Subcomponent$Builder.class',
+            '**/*Module_*Factory.class',
+            '**/CharacterView.class'
+    ]
+    // generated classes
+    classDirectories = fileTree(
+            dir: "$buildDir/intermediates/classes/debug",
+            excludes: excludes
+    ) + fileTree(
+            dir: "$buildDir/tmp/kotlin-classes/debug",
+            excludes: excludes
+    )
+
+
+    // sources
+    sourceDirectories = files([
+            "src/main/kotlin"
+    ])
+    executionData = files("$buildDir/jacoco/testDebugUnitTest.exec")
+}

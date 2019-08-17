@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'realm-android'
+apply from: '../jacoco.gradle'
+
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -17,6 +19,7 @@ android {
     }
     buildTypes {
         debug {
+            testCoverageEnabled true
             buildConfigField "String", "PRIVATE_API_KEY_VALUE", '"your-private-apikey"'
             buildConfigField "String", "PUBLIC_API_KEY_VALUE", '"your-public-apikey"'
             buildConfigField "String", "MARVEL_BASE_URL", '"http://gateway.marvel.com/public/"'
