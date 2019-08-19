@@ -40,4 +40,9 @@ before_install:
 
 script:
   - echo "Building app"
-  - ./gradlew clean assembleDebug testDebugUnitTest
+  - ./gradlew clean assemble jacocoTestReport connectedCheck
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+
