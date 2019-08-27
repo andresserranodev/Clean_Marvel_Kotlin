@@ -1,6 +1,7 @@
 
 [![Build Status](https://travis-ci.org/adsf117/Clean_Marvel_Kotlin.svg?branch=master)](https://travis-ci.org/adsf117/Clean_Marvel_Kotlin)
 [![codecov.io](https://codecov.io/gh/adsf117/Clean_Marvel_Kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/adsf117/Clean_Marvel_Kotlin/)
+[![CodeFactor](https://www.codefactor.io/repository/github/adsf117/clean_marvel_kotlin/badge)](https://www.codefactor.io/repository/github/adsf117/clean_marvel_kotlin)
 
 # Clean Marvel Kotlin
 Kata Kotlin 
