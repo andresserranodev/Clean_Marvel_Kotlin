@@ -1,6 +1,6 @@
 package com.puzzlebench.clean_marvel_kotlin.presentation.di.android
 
-import com.puzzlebench.clean_marvel_kotlin.presentation.MarvelApp
+import com.puzzlebench.clean_marvel_kotlin.presentation.android.MarvelApp
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector

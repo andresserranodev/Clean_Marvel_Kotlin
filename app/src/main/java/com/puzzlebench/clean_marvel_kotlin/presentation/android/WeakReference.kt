@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.presentation
+package com.puzzlebench.clean_marvel_kotlin.presentation.android
 
 import java.lang.ref.WeakReference
 import kotlin.reflect.KProperty

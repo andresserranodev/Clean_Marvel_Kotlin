@@ -1,4 +1,4 @@
-package com.puzzlebench.cmk.data
+package com.puzzlebench.cmk.data.android
 
 import android.app.Application
 import io.realm.Realm

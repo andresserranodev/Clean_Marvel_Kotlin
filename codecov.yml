@@ -33,5 +33,6 @@ ignore:
   - "**/realm/**"
   - "**/retrofit/**"
   - "**/baseresponse/**"
-  - "**/*MarvelApp.class"
+  - "**/android/**"
+
 
