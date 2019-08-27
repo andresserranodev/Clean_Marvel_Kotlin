@@ -1,6 +1,7 @@
 package com.puzzlebench.cmk.data.mapper.service
 
 import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
+import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory.Factory.getMockListCharacterResponse
 import com.puzzlebench.cmk.data.service.response.CharacterResponse
 import com.puzzlebench.cmk.data.service.response.ThumbnailResponse
 import com.puzzlebench.cmk.domain.model.Character
@@ -21,11 +22,19 @@ class CharacterMapperServiceTest {
 
     @Test
     fun transform() {
-
         val mockThumbnailResponse = ThumbnailResponse(CharactersFactory.BASE_PATH, CharactersFactory.BASE_EXTENSION)
         val mockCharacterResponse = CharacterResponse(CharactersFactory.BASE_NAME, CharactersFactory.BASE_DESCRIPTION, mockThumbnailResponse)
         val result = mapper.transform(mockCharacterResponse)
         assertBufferooDataEquality(mockCharacterResponse, result)
+    }
+
+    @Test
+    fun transformList() {
+        val mockListCharacterResponse = getMockListCharacterResponse()
+        val result = mapper.transform(mockListCharacterResponse)
+        result.forEachIndexed { index, resultCharacter ->
+            assertBufferooDataEquality(mockListCharacterResponse[index], resultCharacter)
+        }
     }
 
     @Test

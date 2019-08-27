@@ -1,8 +1,8 @@
-package com.puzzlebench.cmk.data.service.api
+package com.puzzlebench.cmk.data.service.retrofit.api
 
 import com.puzzlebench.cmk.data.service.response.CharacterResponse
-import com.puzzlebench.cmk.data.service.response.DataBaseResponse
-import com.puzzlebench.cmk.data.service.response.MarvelBaseResponse
+import com.puzzlebench.cmk.data.service.baseresponse.DataBaseResponse
+import com.puzzlebench.cmk.data.service.baseresponse.MarvelBaseResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 

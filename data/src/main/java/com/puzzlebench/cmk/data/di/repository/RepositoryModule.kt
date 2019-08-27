@@ -1,6 +1,6 @@
 package com.puzzlebench.cmk.data.di.repository
 
-import com.puzzlebench.cmk.data.repository.CharacterRepositoryImpl
+import com.puzzlebench.cmk.data.cache.CharacterRepositoryImpl
 import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import dagger.Binds
 import dagger.Module

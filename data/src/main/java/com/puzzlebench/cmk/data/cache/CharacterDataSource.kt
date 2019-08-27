@@ -1,4 +1,4 @@
-package com.puzzlebench.cmk.data.repository.source
+package com.puzzlebench.cmk.data.cache
 
 import com.puzzlebench.cmk.data.model.CharacterRealm
 

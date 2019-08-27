@@ -1,7 +1,7 @@
 package com.puzzlebench.cmk.data.di.repository
 
-import com.puzzlebench.cmk.data.repository.source.CharacterDataSource
-import com.puzzlebench.cmk.data.repository.source.CharacterDataSourceImpl
+import com.puzzlebench.cmk.data.cache.CharacterDataSource
+import com.puzzlebench.cmk.data.cache.realm.CharacterDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable

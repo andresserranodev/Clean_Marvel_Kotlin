@@ -1,4 +1,4 @@
-package com.puzzlebench.cmk.data.service.response
+package com.puzzlebench.cmk.data.service.baseresponse
 
 import com.google.gson.annotations.SerializedName
 
