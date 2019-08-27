@@ -30,7 +30,7 @@ ignore:
   - "**/io.realm/**" # ignore realm
   - "**/adapter/**"
   - "**/extension/**"
-  - "**/realm/**",
+  - "**/realm/**/*",
   - "**/retrofit/**",
   - "**/baseresponse/**",
   - "**/*MarvelApp.class"
