@@ -41,6 +41,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
             '**/*Module_*Factory.class',
             '**/CharacterView.class',
             '**/realm/**',
+            '**/android/**',
             '**/retrofit/**',
             '**/baseresponse/**'
     ]
