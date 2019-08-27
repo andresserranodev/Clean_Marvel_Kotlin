@@ -1,7 +1,6 @@
-package com.puzzlebench.cmk.data.repository
+package com.puzzlebench.cmk.data.cache
 
 import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
-import com.puzzlebench.cmk.data.repository.source.CharacterDataSource
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.repository.CharacterRepository
 import io.reactivex.Completable

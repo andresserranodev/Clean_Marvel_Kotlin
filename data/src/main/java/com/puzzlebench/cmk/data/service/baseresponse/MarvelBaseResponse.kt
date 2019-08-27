@@ -1,4 +1,4 @@
-package com.puzzlebench.cmk.data.service.response
+package com.puzzlebench.cmk.data.service.baseresponse
 
 /**
  * Created by andres.serrano on 8/01/2018.

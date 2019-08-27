@@ -1,7 +1,7 @@
-package com.puzzlebench.cmk.data.service
+package com.puzzlebench.cmk.data.service.retrofit
 
 import com.puzzlebench.cmk.data.BuildConfig
-import com.puzzlebench.cmk.data.service.api.MarvelApi
+import com.puzzlebench.cmk.data.service.retrofit.api.MarvelApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

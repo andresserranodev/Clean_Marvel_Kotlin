@@ -39,7 +39,10 @@ task jacocoTestReport(type: JacocoReport, dependsOn: "testDebugUnitTest") {
             '**/Dagger*Subcomponent*.class',
             '**/*Subcomponent$Builder.class',
             '**/*Module_*Factory.class',
-            '**/CharacterView.class'
+            '**/CharacterView.class',
+            '**/realm/**',
+            '**/retrofit/**',
+            '**/baseresponse/**'
     ]
     // generated classes
     classDirectories = fileTree(

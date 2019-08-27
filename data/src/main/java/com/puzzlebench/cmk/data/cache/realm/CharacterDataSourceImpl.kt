@@ -1,6 +1,7 @@
-package com.puzzlebench.cmk.data.repository.source
+package com.puzzlebench.cmk.data.cache.realm
 
 import com.puzzlebench.cmk.data.model.CharacterRealm
+import com.puzzlebench.cmk.data.cache.CharacterDataSource
 import io.realm.Realm
 import javax.inject.Inject
 

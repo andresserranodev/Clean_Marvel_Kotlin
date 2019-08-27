@@ -59,8 +59,11 @@ dependencies {
     kapt kaptLibs.daggerCompiler,
             kaptLibs.daggerAndroidProcessor
 
-    testImplementation generalTestDependencies.junit,
-            generalTestDependencies.kotlinTest
+    testImplementation generalTestDependencies.mockito,
+            generalTestDependencies.junit,
+            generalTestDependencies.mockitoInline,
+            generalTestDependencies.kotlinTest,
+            generalTestDependencies.mockitoKotlin
 
     implementation dataDependencies.retrofit,
             dataDependencies.retrofitConverter,

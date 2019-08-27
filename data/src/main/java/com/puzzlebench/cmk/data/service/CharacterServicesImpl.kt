@@ -1,7 +1,7 @@
 package com.puzzlebench.cmk.data.service
 
 import com.puzzlebench.cmk.data.mapper.service.CharacterMapperService
-import com.puzzlebench.cmk.data.service.api.MarvelApi
+import com.puzzlebench.cmk.data.service.retrofit.api.MarvelApi
 import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.service.CharacterServices
 import io.reactivex.Single
