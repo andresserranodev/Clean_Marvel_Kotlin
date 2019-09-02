@@ -4,7 +4,7 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterContract
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterModel
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterPresenter
 import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.CharacterView
-import com.puzzlebench.cmk.data.di.repository.RepositoryModule
+import com.puzzlebench.cmk.data.di.Cache.RepositoryModule
 import com.puzzlebench.cmk.data.di.service.ServiceModule
 import dagger.Binds
 import dagger.Module

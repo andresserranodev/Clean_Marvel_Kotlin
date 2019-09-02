@@ -1,4 +1,4 @@
-package com.puzzlebench.cmk.data.mapper.repository
+package com.puzzlebench.cmk.data.mapper.cache
 
 import com.puzzlebench.cmk.data.model.CharacterRealm
 import com.puzzlebench.cmk.data.model.ThumbnailRealm
@@ -6,7 +6,7 @@ import com.puzzlebench.cmk.domain.model.Character
 import com.puzzlebench.cmk.domain.model.Thumbnail
 import javax.inject.Inject
 
-class CharacterMapperRepository @Inject constructor() : BaseMapperRepository<Character, CharacterRealm> {
+class CharacterMapperCache @Inject constructor() : BaseMapperCache<Character, CharacterRealm> {
 
     override fun transform(input: CharacterRealm): Character = Character(input.name!!, input.description!!, transformToThumbnail(input.thumbnail!!))
 

@@ -6,7 +6,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
-import com.puzzlebench.cmk.domain.repository.CharacterRepository
+import com.puzzlebench.cmk.domain.cache.CharacterCache
 import com.puzzlebench.cmk.domain.service.CharacterServices
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -17,7 +17,7 @@ class FetchCharacterUseCaseTest {
 
     private lateinit var useCase: FetchCharacterUseCase
     private var characterServices = mock<CharacterServices>()
-    private var characterRepository = mock<CharacterRepository>()
+    private var characterRepository = mock<CharacterCache>()
 
     @Before
     fun setUp() {

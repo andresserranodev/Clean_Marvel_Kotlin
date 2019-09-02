@@ -1,4 +1,4 @@
-package com.puzzlebench.cmk.data.mapper.repository
+package com.puzzlebench.cmk.data.mapper.cache
 
 import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory
 import com.puzzlebench.cmk.data.model.CharacterRealm
@@ -11,11 +11,11 @@ import org.junit.Test
 
 class CharacterMapperRepositoryTest {
 
-    private lateinit var mapper: CharacterMapperRepository
+    private lateinit var mapper: CharacterMapperCache
 
     @Before
     fun setUp() {
-        mapper = CharacterMapperRepository()
+        mapper = CharacterMapperCache()
 
     }
 

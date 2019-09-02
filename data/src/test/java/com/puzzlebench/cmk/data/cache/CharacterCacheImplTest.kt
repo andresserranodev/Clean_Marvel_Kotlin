@@ -5,26 +5,26 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
+import com.puzzlebench.cmk.data.mapper.cache.CharacterMapperCache
 import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory.Factory.getMockListCharacter
 import com.puzzlebench.cmk.data.mocks.factory.CharactersFactory.Factory.getMockListCharacterRealm
 import org.junit.*
 
-class CharacterRepositoryImplTest {
+class CharacterCacheImplTest {
 
-    private lateinit var characterRepositoryImpl: CharacterRepositoryImpl
+    private lateinit var characterCacheImpl: CharacterCacheImpl
     private var characterDataSourceImpl = mock<CharacterDataSource>()
-    private val characterMapperRepository = mock<CharacterMapperRepository>()
+    private val characterMapperRepository = mock<CharacterMapperCache>()
 
     @Before
     fun setUp() {
-        characterRepositoryImpl = CharacterRepositoryImpl(characterDataSourceImpl, characterMapperRepository)
+        characterCacheImpl = CharacterCacheImpl(characterDataSourceImpl, characterMapperRepository)
     }
 
     @Test
     fun save() {
         val listCharacter = getMockListCharacter()
-        characterRepositoryImpl.save(listCharacter).test()
+        characterCacheImpl.save(listCharacter).test()
         verify(characterMapperRepository).transform(listCharacter[1])
         verify(characterDataSourceImpl).saveCharacters(any())
 
@@ -35,7 +35,7 @@ class CharacterRepositoryImplTest {
     fun getAll() {
         val dataSourceResult = getMockListCharacterRealm()
         whenever(characterDataSourceImpl.getAllCharacters()).doReturn(dataSourceResult)
-        characterRepositoryImpl.getAll()
+        characterCacheImpl.getAll()
         verify(characterDataSourceImpl).getAllCharacters()
         verify(characterMapperRepository).transform(dataSourceResult[1])
     }

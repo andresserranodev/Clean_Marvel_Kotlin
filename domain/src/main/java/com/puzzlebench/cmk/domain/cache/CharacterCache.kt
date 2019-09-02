@@ -1,9 +1,9 @@
-package com.puzzlebench.cmk.domain.repository
+package com.puzzlebench.cmk.domain.cache
 
 import com.puzzlebench.cmk.domain.model.Character
 import io.reactivex.Completable
 
-interface CharacterRepository {
+interface CharacterCache {
     fun getAll(): List<Character>
     fun save(c: List<Character>): Completable
 }

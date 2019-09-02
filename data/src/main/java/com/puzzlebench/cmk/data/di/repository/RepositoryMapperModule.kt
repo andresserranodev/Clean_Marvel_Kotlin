@@ -1,7 +1,7 @@
-package com.puzzlebench.cmk.data.di.repository
+package com.puzzlebench.cmk.data.di.Cache
 
-import com.puzzlebench.cmk.data.mapper.repository.BaseMapperRepository
-import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
+import com.puzzlebench.cmk.data.mapper.cache.BaseMapperCache
+import com.puzzlebench.cmk.data.mapper.cache.CharacterMapperCache
 import com.puzzlebench.cmk.data.model.CharacterRealm
 import com.puzzlebench.cmk.domain.model.Character
 import dagger.Binds
@@ -12,6 +12,6 @@ import dagger.Reusable
 abstract class RepositoryMapperModule {
     @Binds
     @Reusable
-    abstract fun provideCharacterMapperRepository(mapper: CharacterMapperRepository): BaseMapperRepository<Character, CharacterRealm>
+    abstract fun provideCharacterMapperRepository(mapper: CharacterMapperCache): BaseMapperCache<Character, CharacterRealm>
 
 }
