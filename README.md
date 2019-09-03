@@ -35,7 +35,7 @@ Follow :
 
 ##  What can i do?
 
-main objective with this Cache  is give the ability to change the details easily for example
+main objective with this repository  is give the ability to change the details easily for example
 1. use Room instead Realm
 2. use Fast-Android-Networking  instead Retrofit
 3. use MVVM or MVI instead MVP
@@ -56,7 +56,7 @@ Martin, Robert C.. Clean Architecture: A Craftsman's Guide to Software Structure
 
 ## How to use this project
 
-You can use Android Studio or Intellij to work with this Cache.
+You can use Android Studio or Intellij to work with this repository.
 
 First thing you will need to compile this project is to get an [API Key and hash from Marvel](https://marvel.com/signin?referer=https%3A%2F%2Fdeveloper.marvel.com%2Faccount)
 
