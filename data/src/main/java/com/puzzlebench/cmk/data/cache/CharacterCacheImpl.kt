@@ -1,15 +1,15 @@
 package com.puzzlebench.cmk.data.cache
 
-import com.puzzlebench.cmk.data.mapper.repository.CharacterMapperRepository
+import com.puzzlebench.cmk.data.mapper.cache.CharacterMapperCache
 import com.puzzlebench.cmk.domain.model.Character
-import com.puzzlebench.cmk.domain.repository.CharacterRepository
+import com.puzzlebench.cmk.domain.cache.CharacterCache
 import io.reactivex.Completable
 import javax.inject.Inject
 
 
-class CharacterRepositoryImpl @Inject constructor(private val dataSource: CharacterDataSource,
-                                                  private val mapper: CharacterMapperRepository)
-    : CharacterRepository {
+class CharacterCacheImpl @Inject constructor(private val dataSource: CharacterDataSource,
+                                             private val mapper: CharacterMapperCache)
+    : CharacterCache {
 
     override fun save(c: List<Character>): Completable {
         return Completable.fromAction {

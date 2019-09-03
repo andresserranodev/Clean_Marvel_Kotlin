@@ -1,4 +1,4 @@
-package com.puzzlebench.cmk.data.di.repository
+package com.puzzlebench.cmk.data.di.cache
 
 import com.puzzlebench.cmk.data.cache.CharacterDataSource
 import com.puzzlebench.cmk.data.cache.realm.CharacterDataSourceImpl
