@@ -1,4 +1,4 @@
-package com.puzzlebench.clean_marvel_kotlin.presentation
+package com.puzzlebench.clean_marvel_kotlin.presentation.android
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

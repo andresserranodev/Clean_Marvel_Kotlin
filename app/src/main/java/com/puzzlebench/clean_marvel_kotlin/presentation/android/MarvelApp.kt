@@ -1,8 +1,8 @@
-package com.puzzlebench.clean_marvel_kotlin.presentation
+package com.puzzlebench.clean_marvel_kotlin.presentation.android
 
 import android.app.Activity
 import com.puzzlebench.clean_marvel_kotlin.presentation.di.android.DaggerAppComponent
-import com.puzzlebench.cmk.data.DataApp
+import com.puzzlebench.cmk.data.android.DataApp
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
